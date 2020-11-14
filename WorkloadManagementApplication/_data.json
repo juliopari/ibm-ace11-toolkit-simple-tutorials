@@ -1,0 +1,303 @@
+{
+    "version": "0.6",
+    "pageContent": 
+	{
+        "_comments": "JSON object that contains data for page labels, buttons, etc.",
+        "navItems": 
+		{
+            "_common": 
+			{
+                "buttonBackToGallery": 
+				{
+                    "name": "Back To Gallery",
+					"method": "backToGallery()",
+					"idName": "backToGallery"	
+                },
+                "buttonStartTutorial": 
+				{
+                    "name": "Start Tutorial",
+					"method": "startTutorialFromDetailsScreen()",
+					"idName": "startTutorial"
+                },
+				"buttonViewDetails": 
+				{
+                    "name": "View Details",
+					"method": "viewDetails()",
+					"idName": "stepsViewDetails"	
+                }
+            }
+        }
+    },
+    "tutorial": 
+	{
+        "_common": 
+		{
+            "name": "Using a Workload Management Policy to 'Throttle' Throughput of a Message Flow",
+            "shortDescription": "Learn how to use a Workload Management Policy to control the throughput of a message flow.",
+            "durationText": "This tutorial takes approximately",
+            "durationTime": "15 minutes",
+            "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+            "resourceToOpen": "EventRoutingFlow",
+            "helpLink": 
+			{
+                "text": "IBM Knowledge Center",
+                "link": "/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm"
+            }
+        },
+        "pageDetails": 
+		{
+            "topicsName": "Tutorial Topics",
+            "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+            "topicList": 
+			[
+                {
+                    "title": "Workload Management Policies"
+                },
+                {
+                    "title": "mqsicreatepolicy"
+                },
+                {
+                    "title": "mqsiattachpolicy"
+                }				
+            ],
+            "outcomesName": "Learning outcomes",
+            "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+            "outcomeList": 
+			[
+                {
+                    "title": "Understand how to use a Workload Management Policy to limit the throughput of a Message Flow."
+                }
+            ],
+            "summary": 
+			{
+                "overviewName": "OVERVIEW",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the IIB concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "sections": 
+				[
+                    {
+                        "section": "This tutorial demonstrates how to use a Workload Management Policy to control the maximum throughput of a message flow. This use of a Workload Management Policy is particularly useful when backend systems that a message flow interacts with are unable to keep up with a workload sent from a requesting application."
+                    },                    {
+                        "section": "This tutorial provides a message flow that performs a simple transformation of an XML input message received over HTTP before sending a reply to the requesting application."
+                    },
+                    {
+                        "section": "If you are using Developer Edition, which restricts message processing to 1 message per second, or your system is unable to process messages through the flow at a rate that exceeds 1 message per second then you will not be able to observe the effects of attaching a Workload Management Policy that is demonstated by this tutorial."
+                    }										                ]
+            },
+			"helpLinks": 
+			{
+				"_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+				"title": "Find out more",
+				"details": 
+				[
+					{
+						"title": "Knowledge Center link to ",
+						"description": "Developing integration solutions by using applications",
+						"link": "com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "help"
+					},
+					{
+						"title": "GitHub link to ",
+						"description": "DFDL Schemas",
+						"link": "http://github.com/DFDLSchemas",
+						"type": "web"
+					}
+				]
+			}
+        },
+        "pageSteps": 
+		{
+            "create": 
+			{
+                "overview": 
+				{
+                    "name": "Create",
+                    "heading": "Import projects",
+                    "_createComment": "A description of what will happen when the user clicks Import.",
+                    "sections": 
+					[
+                        {
+                            "section": "Click <span class='uicontrol'>Import</span> to add an application called <span class='application'>WorkloadManagementApplication</span> to your workspace."
+                        },
+                        {
+                            "section": "The <span class='application'>WorkloadManagementApplication</span> application contains the following resources.",								"steps":{
+									"type":"unordered",
+									"details":[
+										{
+											"details": "<span class='msgflow'>WorkloadManagementFlow</span> a message flow that receives an HTTP message, performs a simple transformation and then sends an HTTP reply."
+										},
+										{
+											"details": "<span class='resource'>MaxRate1.xml</span> a Workload Management Policy that sets the maximum message processing rate to 1 message per second."
+										},
+										{
+											"details": "<span class='resource'>TestMessage.xml</span> an XML input message to test the message flow with."
+										}
+									]								}
+                        },
+
+						{
+							"section": "Once you import the tutorial the <span class='application'>WorkloadManagementApplication</span> application is ready to be deployed and tested. Before you do this you will create the Workload Management Policy as described under the <span class='uicontrol'>Prepare</span> tab."
+						}						
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Workload management",
+                            "link": "com.ibm.etools.mft.doc/bj58250_.htm"
+                        },
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Setting the maximum rate for a message flow",
+                            "link": "com.ibm.etools.mft.doc/bj58270_.htm"
+                        }
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": 
+					[
+						{
+                            "section": "Before deploying the <span class='application'>WorkloadManagementApplication</span> application you will create the Workload Management Policy which you will later attach to the <span class='msgflow'>WorkloadManagementFlow</span> message flow when you run the scenario."                        },
+						{
+                            "section": "<h4>Create the Workload Management Policy</h4>"                        },
+						{
+							"section":"A Workload Management Policy can be created using the Web Administration Tool or by using the command line. This tutorial provides an XML file called <span class='resource'>MaxRate1.xml</span> which you will use to create a Workload Management Policy called <span class='resource'>MaxRate1</span> using the command line. You will later apply this policy to the <span class='msgflow'>WorkloadManagementFlow</span> message flow to ‘throttle’ its throughput to 1 message per second when you test the scenario."						},
+						{							"section":"To create the policy complete the following steps:",
+								"steps":{
+								"type":"ordered",
+								"details":[
+										{
+											"details":"Open an IBM Integration console."
+										},										{
+											"details":"Type in the following command to create a Workload Management Policy:<br><code><span class='cmdname'>mqsicreatepolicy</span> <span class='varname'>TESTNODE_userid</span> -t WorkloadManagement -l MaxRate1 -f <span class='varname'>{WorkspacePath}</span>/WorkloadManagementApplication/Policies/MaxRate1.xml</span></code><br>where<br><span class='varname'>{WorkspacePath}</span> is the location of your current Toolkit workspace."
+										}										
+								]
+							}
+						},               			{
+                        	"section": "<h4>Deploy the WorkloadManagementApplication to the Integration Node</h4>"						},
+						{                        	"section": "Deploy the <span class='application'>WorkloadManagementApplication</span> application by clicking on <span class='uicontrol'>Deploy</span>."
+                        }                    ]					
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Creating policies by using the command line",
+                            "link": "com.ibm.etools.mft.doc/bn34268_.htm"
+                        }                    ]
+                },
+                "actions": 				{
+                    "title": "Prepare Actions",
+                    "details": 					[
+                        {
+                            "name": "Deploy",                            "method": "deployArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "run": 
+			{
+               "overview": 				{
+                    "name": "Run",
+                    "heading": "Test the scenario",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                    "sections": 
+					[
+						{
+							"section": "To test the scenario, you will use two separate IBM Integration Console windows. In one console window you will generate a workload of messages and observe the message processing rate. While that workload is being processed you will use another console window to attach the Workload Management Policy that you created earlier to the <span class='msgflow'>WorkloadManagementFlow</span> message flow."
+						},						{
+							"section": "<h4>Generating a workload of messages</h4>"						},
+	                	{
+        	            	"section": "The PerfHarness Test Tool is used to generate a workload of HTTP request messages that are processed by the <span class='msgflow'>WorkloadManagementFlow</span> message flow. You will need to download and install the PerfHarness tool from the link below. Once PerfHarness is installed generate the workload of input messages by completing the following steps:",							"steps":{
+									"type":"ordered",
+								"details":[
+									{
+										"details":"Open an IBM Integration Console."
+									},
+									{
+										"details":"Check which port the default integration server is listening on for HTTP requests by running the following command:<br><code>mqsireportproperties TESTNODE_userid -e default -o HTTPConnector -n port</code>"
+									},																		{
+										"details":"In the console window run the PerfHarness Test Tool by typing the following command:<br><code>java -ms512M -mx512M -cp <span class='varname'>{PerfHarnessInstallPath}</span>/perfharness.jar JMSPerfHarness -tc http.HTTPRequestor -rl 90 -jh localhost -jp <span class='varname'>{HTTPPort}</span> -mf <span class='varname'>{WorkspacePath}</span>/WorkloadManagementApplication/TestMessages/TestMessage.xml -wi 10 -to 10000 -sh false -ws 1 -dn 1 -sc BasicStats -ss 5 -nt 1 -ur wlm</code><br>where,<br><span class='varname'>{HTTPPort}</span> is the port the Integration Server is listening on for HTTP requests from the previous step<br><span class='varname'>{PerfHarnessInstallPath} is the location in which perfharness.jar is installed<br><span class='varname'>{WorkspacePath}</span> is the location of your current Toolkit workspace."
+									},
+									{
+										"details":"PerfHarness will run for 90 seconds and output the message rate at which it is processing messages. The actual message rate achieved is dependent upon the performance of your system but it needs to be in excess of 1 message per second for you to observe the effects of applying the Workload Management Policy in this tutorial."
+									}																										]
+							}
+                		},						{
+							"section": "<h4>Apply the Workload Management Policy to restrict the message throughput</h4>"
+						},
+	                	{
+        	            	"section": "Use the MaxRate1 Workload Management Policy to restrict the throughput of the <span class='msgflow'>WorkloadManagementFlow</span> message flow by completing the following steps:",							"steps":{
+									"type":"ordered",
+								"details":[
+									{
+										"details":"Open another IBM Integration Console."
+									},
+									{
+										"details":"In the console window attach the MaxRate1 policy to the <span class='msgflow'>WorkloadManagementFlow</span> message flow by typing the following:<br><code>mqsiattachpolicy TESTNODE_userid -e default -k WorkloadManagementApplication -m WorkloadManagementFlow -t WorkloadManagement -l MaxRate1"
+									},									{
+										"details":"After attaching the Workload Management Policy observe that the message processing rate in the IBM Integration Console window running PerfHarness has dropped to approximately 1 message per second."
+									}																		
+								]							}
+                		}						
+					]				},
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "mqsiattachpolicy command",
+                            "link": "com.ibm.etools.mft.doc/bn34254_.htm"
+                        },
+
+                        {
+                            "title": "developerWorks link to ",
+                            "description": "Performance testing with PerfHarness",                            "link": "https://developer.ibm.com/open/2016/05/12/performance-testing-with-perfharness/",
+							"type": "web"
+                        },                        {
+                            "title": "GitHub link to ",
+                            "description": "PerfHarness download",
+                            "link": "https://github.com/ot4i/perf-harness?cm_mc_uid=42692352179214933019160&cm_mc_sid_50200000=",							"type": "web"
+                        }						
+                    ]
+                },
+				"exits": 
+				{
+					"title": "Run Exits",
+					"details": 
+					[
+						{
+							"name": "Clean Up",
+							"description": "Clean up and remove any changes in your workspace made by the tutorial.",
+							"method": "cleanUp()"
+						}
+					]
+				}
+            }
+        }
+    }
+}

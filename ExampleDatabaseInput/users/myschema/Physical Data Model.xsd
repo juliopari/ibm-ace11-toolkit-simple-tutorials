@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://users/myschema" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:usersmyschema="http://users/myschema">
+  <!-- Message definition generated from C:\Users\BENJAMINThompson\IBM\ACET11\workspaceAggregationTutorialsI\ExampleDataDesign\Physical Data Model.dbm -->
+
+<!-- Complex type for USERS.MYSCHEMA.EMPLOYEES -->
+    <xsd:complexType name="EMPLOYEESType">
+    <xsd:sequence>
+      <xsd:element name="PKEY" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="FIRSTNAME" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="30"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="LASTNAME" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="30"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="COUNTRY" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+<!-- Global element for USERS.MYSCHEMA.EMPLOYEES -->
+    <xsd:element ibmSchExtn:docRoot="true" name="EMPLOYEES" type="usersmyschema:EMPLOYEESType"/>
+</xsd:schema>

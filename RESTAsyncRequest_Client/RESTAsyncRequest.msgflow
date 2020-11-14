@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmRESTAsyncRequest.msgnode="ComIbmRESTAsyncRequest.msgnode" xmlns:ComIbmRESTAsyncResponse.msgnode="ComIbmRESTAsyncResponse.msgnode" xmlns:ComIbmWSInput.msgnode="ComIbmWSInput.msgnode" xmlns:ComIbmWSReply.msgnode="ComIbmWSReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="RESTAsyncRequest.msgflow" nsPrefix="RESTAsyncRequest.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="RESTAsyncRequest" bundleName="RESTAsyncRequest" pluginId="RESTAsyncRequest_Client"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RESTAsyncRequest_Client/icons/full/obj16/RESTAsyncRequest.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RESTAsyncRequest_Client/icons/full/obj30/RESTAsyncRequest.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="52,28" URLSpecifier="/REST/getUser" parseQueryString="true" messageDomainProperty="XMLNSC" messageSetProperty="{RESTAsyncRequest_SharedLibrary}">
+        <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRESTAsyncRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="149,24" asyncResponseCorrelator="RESTAsync" definitionType="swagger_20" definitionFile="{RESTAsyncRequest_SharedLibrary}RESTAsyncRequest_API_swagger.json" operationName="getUserNumber" acceptCompressedResponses="true">
+        <translation xmi:type="utility:ConstantString" string="getUserNumber Async Request"/>
+        <parameters name="UserNumber" expression="$Root/XMLNSC/User/UserNumber"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRESTAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="43,110" asyncRequestCorrelator="RESTAsync">
+        <translation xmi:type="utility:ConstantString" string="getUserNumber Async Response"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="322,106">
+        <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "IBM-supplied JSON schema for IBM Integration Bus tutorial input message",
+  "description": "(C) Copyright IBM Corp. 2016 All Rights Reserved.",
+  "type": "object",
+  "name": "Input",
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "skip": {
+      "type": "integer"
+    },
+    "limit": {
+        "type": "integer"
+    },
+    "where": {
+        "type": "string"
+      }
+  }  
+}

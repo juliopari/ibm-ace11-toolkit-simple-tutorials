@@ -1,0 +1,5 @@
+define qlocal(AGG.IN) replace
+define qlocal(BACKEND1) replace
+define qlocal(BACKEND2) replace
+define qlocal(BACKEND.REPLY) replace
+define qlocal(AGG.OUT) replace

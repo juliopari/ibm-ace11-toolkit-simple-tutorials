@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">     
+        <xsd:element name="CountyAbbr" type="xsd:string"/>   
+    <xsd:element name="Result" nillable="true">     
+    <xsd:complexType>     
+      <xsd:sequence>     
+        <xsd:element name="CountyName" nillable="true" type="xsd:string"/>     
+                </xsd:sequence>     
+    </xsd:complexType>     
+  </xsd:element>     
+</xsd:schema>]]></inlinedXMLSchema>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var5"/>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" var="var2"/>
+    <input path="mbsharedlib://LookupTableCSVdata/LookupTableCSVdata.xsd" var="var4"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var6"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var1"/>
+    <output path="jar:file://!com/ibm/msl/mapping/cache/xsds/cache.xsd" var="var3"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/iib/msl/json"/>
+        <namespace kind="supplement" prefix="out" uri="http://www.ibm.com/msl/cache/1.0"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="LoadCache_Mapping">
+        <input path="$var5/mb:env(Environment)" var="Environment">
+            <cast castType="userDefined" path="$Environment/Variables/any" qualifier="CountyAbbr" ref="var2" var="any"/>
+        </input>
+        <input path="$var4/mb:msg(LookupTableCSVdata,assembly,DFDL)" var="MessageAssembly"/>
+        <output path="$var6/mb:env(Environment)" var="Environment1">
+            <cast castType="userDefined" path="$Environment1/Variables/any" qualifier="CountyAbbr" ref="var2" var="any1"/>
+        </output>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var1/mb:msg(JSON,assembly,JSON)" var="ComIbmMessageAssembly_JSON1">
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON1/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var1" var="anyType"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON1/JSON/spath('Data',2)/any" qualifier="Result" ref="var2" var="any2"/>
+        </output>
+        <passthrough>
+            <input path="$Environment/."/>
+            <output path="$Environment1/."/>
+            <updates/>
+        </passthrough>
+        <foreach>
+            <input path="$MessageAssembly/LookupTableCSVdata/record" var="record"/>
+            <input auxiliary="true" path="$Environment/Variables/CountyAbbr" var="CountyAbbr1"/>
+            <output path="$ComIbmMessageAssembly_JSON1/JSON/spath('Data',2)/Result"/>
+            <cachePut mode="upsert">
+                <input path="$record/key" var="key"/>
+                <input path="$record/value" var="value"/>
+                <output path="$var3/CachePut"/>
+                <move>
+                    <input path="$key/."/>
+                    <output path="Key"/>
+                </move>
+                <move>
+                    <input path="$value/."/>
+                    <output path="Value"/>
+                </move>
+                <expression>
+                    <output path="MapName"/>
+                    <code lang="xpath">iib:getUserDefinedProperty('LookupTable_MapName')</code>
+                </expression>
+            </cachePut>
+            <if>
+                <input path="$record/." var="record1"/>
+                <input path="$CountyAbbr1/." var="CountyAbbr2"/>
+                <output path="."/>
+                <test lang="xpath">$record1/key = $CountyAbbr2</test>
+                <move>
+                    <input path="$record1/value" var="value2"/>
+                    <output path="CountyName"/>
+                </move>
+            </if>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<palette:CategoryCmp xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:palette="http://www.ibm.com/wbi/2005/eflow_palette" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" xmi:id="TutorialExample">
+  <categoryLabel xsi:type="utility:TranslatableString" key="category.name" bundleName="palette" pluginId="PolicyQuery"/>
+  <cmpGroups xsi:type="palette:GroupCmp">
+    <cmpEntries xsi:type="palette:ToolEntry" xmi:id="com.ibm.dev.PolicyQuery" icon16Name="platform:/plugin/PolicyQuery/icons/full/clcl16/com/ibm/dev/PolicyQuery.gif" icon32Name="platform:/plugin/PolicyQuery/icons/full/obj32/com/ibm/dev/PolicyQuery.gif" toolClassName="com.ibm.etools.mft.flow.editor.MFTNodeCreationTool" toolClassPluginId="com.ibm.etools.mft.flow" nodeURI="com/ibm/dev/PolicyQuery.msgnode">
+      <entryLabel xsi:type="utility:TranslatableString" key="entry.com.ibm.dev.PolicyQuery" bundleName="palette" pluginId="PolicyQuery"/>
+      <entryShortDescription xsi:type="utility:TranslatableString" key="tooltip.com.ibm.dev.PolicyQuery" bundleName="palette" pluginId="PolicyQuery"/>
+    </cmpEntries>
+  </cmpGroups>
+</palette:CategoryCmp>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <InputMessage timestamp="1428507346100" nodeId="FCMComposite_1_1" name="new message 1" id="1428507346100-6">
+        <plainText>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xD;
+&lt;sm:SaleMessage xmlns:sm=&quot;http://iib.tutorial/salesMessage&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://iib.tutorial/salesMessage SaleMessage.xsd &quot;&gt;&#xD;
+  &lt;sm:Header&gt;&#xD;
+    &lt;sm:SaleListCount&gt;1&lt;/sm:SaleListCount&gt;&#xD;
+    &lt;sm:Hostname&gt;localhost&lt;/sm:Hostname&gt;&#xD;
+    &lt;sm:Port&gt;7777&lt;/sm:Port&gt;&#xD;
+  &lt;/sm:Header&gt;&#xD;
+  &lt;sm:SaleList&gt;&#xD;
+    &lt;sm:Invoice&gt;&#xD;
+      &lt;sm:Initial&gt;J&lt;/sm:Initial&gt;&#xD;
+      &lt;sm:Surname&gt;Smith&lt;/sm:Surname&gt;&#xD;
+      &lt;sm:Item&gt;&#xD;
+        &lt;sm:Code&gt;12345678&lt;/sm:Code&gt;&#xD;
+        &lt;sm:Description&gt;Cycle world - Yearly subscription&lt;/sm:Description&gt;&#xD;
+        &lt;sm:Category&gt;Magazine subscription&lt;/sm:Category&gt;&#xD;
+        &lt;sm:Price&gt;25&lt;/sm:Price&gt;&#xD;
+        &lt;sm:Quantity&gt;1&lt;/sm:Quantity&gt;&#xD;
+      &lt;/sm:Item&gt;&#xD;
+      &lt;sm:Item&gt;&#xD;
+        &lt;sm:Code&gt;12345679&lt;/sm:Code&gt;&#xD;
+        &lt;sm:Description&gt;W. Shakespear - Hamlet&lt;/sm:Description&gt;&#xD;
+        &lt;sm:Category&gt;Books&lt;/sm:Category&gt;&#xD;
+        &lt;sm:Price&gt;28&lt;/sm:Price&gt;&#xD;
+        &lt;sm:Quantity&gt;1&lt;/sm:Quantity&gt;&#xD;
+      &lt;/sm:Item&gt;&#xD;
+      &lt;sm:Balance&gt;53&lt;/sm:Balance&gt;&#xD;
+    &lt;/sm:Invoice&gt;&#xD;
+  &lt;/sm:SaleList&gt;&#xD;
+  &lt;sm:Trailer&gt;&#xD;
+    &lt;sm:CompletionTime&gt;12:11:15-30.12.2014&lt;/sm:CompletionTime&gt;&#xD;
+  &lt;/sm:Trailer&gt;&#xD;
+&lt;/sm:SaleMessage&gt;&#xD;
+</plainText>
+    </InputMessage>
+</MessagePool>

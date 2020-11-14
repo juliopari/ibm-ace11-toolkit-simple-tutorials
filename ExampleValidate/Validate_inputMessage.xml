@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <InputMessage timestamp="1564763122253" nodeId="FCMComposite_1_1" name="ExamplePASS" id="1564763122253-2629">
+        <plainText>%3CMessage%3E%3CChild%3EThis+message+will+PASS+validation%3C%2FChild%3E%3C%2FMessage%3E</plainText>
+    </InputMessage>
+    <InputMessage timestamp="1564764457294" nodeId="FCMComposite_1_1" name="ExampleFAIL" id="1564764457294-3009">
+        <plainText>%3CMessage%3E%3CInvalidName%3EThis+message+will+FAIL+validation%3C%2FInvalidName%3E%3C%2FMessage%3E</plainText>
+    </InputMessage>
+</MessagePool>

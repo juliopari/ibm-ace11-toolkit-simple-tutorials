@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:element name="alternate_flowname" nillable="true" type="xsd:string"/>
+    <xsd:element name="alternate_application_override" nillable="true" type="xsd:string"/>
+    <xsd:element name="alternate_timestamp" nillable="true" type="xsd:string"/>
+</xsd:schema>]]></inlinedXMLSchema>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" var="var2"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var1"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/iib/msl/json"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="timestampJustTime_Mapping">
+        <input namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,LocalEnvironment,Properties)" var="MessageAssembly">
+            <cast castType="userDefined" path="$MessageAssembly/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var"/>
+        </input>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var1/mb:msg(JSON,assembly,JSON,Properties)" var="MessageAssembly1">
+            <cast castType="userDefined" path="$MessageAssembly1/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var1"/>
+            <cast castType="userDefined" path="$MessageAssembly1/any" qualifier="{http://www.ibm.com/iib/msl/json}Unresolved: {http://www.ibm.com/iib/msl/json}calledflowtimestamp"/>
+            <cast castType="userDefined" path="$MessageAssembly1/JSON/spath('Data',2)/any" qualifier="alternate_timestamp" ref="var2"/>
+            <cast castType="userDefined" path="$MessageAssembly1/JSON/spath('Data',2)/any" qualifier="alternate_application_override" ref="var2"/>
+            <cast castType="userDefined" path="$MessageAssembly1/JSON/spath('Data',2)/any" qualifier="alternate_flowname" ref="var2"/>
+        </output>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/JSON"/>
+            <output path="$MessageAssembly1/JSON"/>
+            <override>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/Destination/CallableFlow/Invoke/targetApplication"/>
+                    <output path="$MessageAssembly1/JSON/spath('Data',2)/alternate_application_override"/>
+                </move>
+                <function ref="fn:concat">
+                    <output path="$MessageAssembly1/JSON/spath('Data',2)/alternate_timestamp"/>
+                    <param name="string1" value="'Alternate timestamp: '"/>
+                    <param name="string2" value="fn:current-time()"/>
+                </function>
+                <expression>
+                    <output path="$MessageAssembly1/JSON/spath('Data',2)/alternate_flowname"/>
+                    <code lang="xpath">iib:getMessageFlowName()</code>
+                </expression>
+            </override>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

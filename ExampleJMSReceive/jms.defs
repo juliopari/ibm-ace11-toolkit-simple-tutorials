@@ -1,0 +1,8 @@
+# Define a QueueConnectionFactory
+# This sets up a MQ client binding.
+DEF QCF(exampleqcf) TRANSPORT(CLIENT) QMANAGER(TESTQM) PORT(2414)
+
+# Define Queue Destinations
+DEF Q(jmsexample) QUEUE(EXAMPLE) QMANAGER(TESTQM)
+
+END

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="MQEndpoint" policyName="MyMQPolicy" policyTemplate="MQEndpoint">
+    <connection>SERVER</connection>
+    <destinationQueueManagerName>TESTQM2</destinationQueueManagerName>
+    <queueManagerHostname></queueManagerHostname>
+    <listenerPortNumber>1414</listenerPortNumber>
+    <channelName></channelName>
+    <securityIdentity></securityIdentity>
+    <useSSL>false</useSSL>
+    <SSLPeerName></SSLPeerName>
+    <SSLCipherSpec></SSLCipherSpec>
+  </policy>
+</policies>

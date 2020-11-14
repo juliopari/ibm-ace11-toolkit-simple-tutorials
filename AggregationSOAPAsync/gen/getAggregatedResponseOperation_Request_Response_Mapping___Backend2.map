@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="gen" version="8.0.5.0" xmlns:map="gen">
+    <input path="/AggregationSOAPAsync_InlineSchema1.xsd"/>
+    <output path="mbsharedlib://AggregationSOAPAsyncLib/AggregationSOAPBackend2_InlineSchema1.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://AggregationSOAPAsync"/>
+        <namespace kind="supplement" prefix="out" uri="http://AggregationSOAPBackend2"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getAggregatedResponseOperation_Request_Response_Mapping___Backend2">
+        <input namespace="http://AggregationSOAPAsync" path="mb:msg(getAggregatedResponseOperation,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_getAggregatedResponseOperation"/>
+        <output namespace="http://AggregationSOAPBackend2" path="mb:msg(backendOperation2,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_backendOperation2"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_getAggregatedResponseOperation/Properties"/>
+            <output path="$ComIbmMessageAssembly_backendOperation2/Properties"/>
+            <override>
+                <assign value="{AggregationSOAPAsyncLib}">
+                    <output path="$ComIbmMessageAssembly_backendOperation2/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_getAggregatedResponseOperation/getAggregatedResponseOperation/input2"/>
+            <output path="$ComIbmMessageAssembly_backendOperation2/backendOperation2/input2"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmAggregateControl.msgnode="ComIbmAggregateControl.msgnode" xmlns:ComIbmAggregateReply.msgnode="ComIbmAggregateReply.msgnode" xmlns:ComIbmAggregateRequest.msgnode="ComIbmAggregateRequest.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmRESTAsyncRequest.msgnode="ComIbmRESTAsyncRequest.msgnode" xmlns:ComIbmRESTAsyncResponse.msgnode="ComIbmRESTAsyncResponse.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="getAggregatedResponse.subflow" nsPrefix="getAggregatedResponse.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="getAggregatedResponse" bundleName="getAggregatedResponse" pluginId="AggregationRESTAsync"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AggregationRESTAsync/icons/full/obj16/getAggregatedResponse.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AggregationRESTAsync/icons/full/obj30/getAggregatedResponse.gif"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input_1" location="43,43">
+        <translation xmi:type="utility:TranslatableString" key="Input" bundleName="getAggregatedResponse" pluginId="AggregationRESTAsync"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output_1" location="658,191">
+        <translation xmi:type="utility:TranslatableString" key="Output" bundleName="getAggregatedResponse" pluginId="AggregationRESTAsync"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="555,88" folderName="Backend2">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Request2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="544,28" folderName="Backend1">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Request1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="414,189" aggregateName="AggregationRESTAsync" unsolicitedTimeout="30" transactionMode="true">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Reply"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="542,190" computeExpression="esql://routine/#getAggregatedResponse_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateControl.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="192,43" aggregateName="AggregationRESTAsync" timeoutInterval="0" timeoutLocation="$LocalEnvironment/Aggregation/Timeout">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Control"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRESTAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="160,167" asyncRequestCorrelator="RESTAsyncRequest-Backend1">
+        <translation xmi:type="utility:ConstantString" string="RESTAsyncResponse - BACKEND1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRESTAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="161,227" asyncRequestCorrelator="RESTAsyncRequest-Backend2">
+        <translation xmi:type="utility:ConstantString" string="RESTAsyncResponse - BACKEND2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRESTAsyncRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="338,24" asyncResponseCorrelator="RESTAsyncRequest-Backend1" definitionType="swagger_20" definitionFile="AggregationRESTBackend1.json" operationName="getBackend1" acceptCompressedResponses="true">
+        <translation xmi:type="utility:ConstantString" string="RESTAsyncRequest - BACKEND1"/>
+        <parameters name="input1" expression="$LocalEnvironment/REST/Input/Parameters/Field1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRESTAsyncRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="345,84" asyncResponseCorrelator="RESTAsyncRequest-Backend2" definitionType="swagger_20" definitionFile="AggregationRESTBackend2.json" operationName="getBackend2" acceptCompressedResponses="true">
+        <translation xmi:type="utility:ConstantString" string="RESTAsyncRequest - BACKEND2"/>
+        <parameters name="input2" expression="$LocalEnvironment/REST/Input/Parameters/Field2"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="OutTerminal.Output_1" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_8" sourceNode="InTerminal.Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_14" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_12" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

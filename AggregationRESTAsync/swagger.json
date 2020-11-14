@@ -1,0 +1,50 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "AggregationRESTAsync",
+    "version" : "1.0.0",
+    "description" : "AggregationRESTAsync"
+  },
+  "paths" : {
+    "/AggregatedResponse" : {
+      "get" : {
+        "operationId" : "getAggregatedResponse",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/OverallOutputMessage"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve AggregatedResponse",
+        "parameters" : [ {
+          "name" : "Field1",
+          "in" : "query",
+          "type" : "string",
+          "description" : "This value will be sent to Backend1"
+        }, {
+          "name" : "Field2",
+          "in" : "query",
+          "type" : "string",
+          "description" : "This value will be sent to Backend2"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/aggregationrestasync/v1",
+  "definitions" : {
+    "OverallOutputMessage" : {
+      "type" : "object",
+      "properties" : {
+        "ResponseBackend1" : {
+          "type" : "string"
+        },
+        "ResponseBackend2" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+
+
+Importing file: C:\Users\BENJAMINThompson\IBM\ACET11\workspaceAggregationTutorialsI\ExampleDataDesign\Physical Data Model.dbm
+
+
+Processing schema MYSCHEMA.
+Creating complex type for table EMPLOYEES.
+Creating global element for table EMPLOYEES.
+Creating file \ExampleDatabaseInput\users\myschema\Physical Data Model.xsd in the workspace.
+
+Elapsed time processing this message definition file: 5.036 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

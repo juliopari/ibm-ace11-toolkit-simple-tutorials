@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AggregationSOAPAsync" targetNamespace="http://AggregationSOAPAsync" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://AggregationSOAPAsync" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="AggregationSOAPAsyncHttpBinding" originalBindingStyle="document"/>
+        <generatedXSD location="AggregationSOAPAsync_InlineSchema1.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  
+  
+  <wsdl:types>
+    
+        <xsd:schema targetNamespace="http://AggregationSOAPAsync" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+      <xsd:include schemaLocation="AggregationSOAPAsync_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="getAggregatedResponseOperationRequestMsg">
+    <wsdl:part element="tns:getAggregatedResponseOperation" name="getAggregatedResponseOperationParameters"/>
+  </wsdl:message>
+  <wsdl:message name="getAggregatedResponseOperationResponseMsg">
+    <wsdl:part element="tns:getAggregatedResponseOperationResponse" name="getAggregatedResponseOperationResult"/>
+  </wsdl:message>
+  <wsdl:portType name="AggregationSOAPAsync">
+    <wsdl:operation name="getAggregatedResponseOperation">
+            <wsdl:input message="tns:getAggregatedResponseOperationRequestMsg" name="getAggregatedResponseOperationRequest"/>
+            <wsdl:output message="tns:getAggregatedResponseOperationResponseMsg" name="getAggregatedResponseOperationResponse"/>
+        </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AggregationSOAPAsyncHttpBinding" type="tns:AggregationSOAPAsync">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAggregatedResponseOperation">
+            <soap:operation soapAction="http://AggregationSOAPAsync/getAggregatedResponseOperation"/>
+            <wsdl:input name="getAggregatedResponseOperationRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="getAggregatedResponseOperationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+    </wsdl:binding>
+  <wsdl:service name="AggregationSOAPAsyncHttpService">
+    <wsdl:port binding="tns:AggregationSOAPAsyncHttpBinding" name="AggregationSOAPAsyncHttpPort">
+      <soap:address location="http://localhost:7800/AggregationSOAPAsync"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

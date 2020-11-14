@@ -1,0 +1,24 @@
+<wsp:Policy xmlns:wsp="http://www.w3.org/ns/ws-policy">
+  <iwlm:workloadManagement xmlns:iwlm="http://www.ibm.com/xmlns/prod/websphere/iib/9.0.0/policy/wlm">
+    <!-- Each of the following lines specify a value in the policy. -->
+    <!-- If any are left blank or missed out then the deployed value on the message flow is used. --> 
+    <!-- Notification threshold - Number of messages per second. A value of zero disables the mechanism. -->
+    <iwlm:notificationThresholdMsgsPerSec></iwlm:notificationThresholdMsgsPerSec>
+    <!-- Maximum rate - Number of messages per second. A value of zero disables the mechanism. -->
+    <iwlm:maximumRateMsgsPerSec>1</iwlm:maximumRateMsgsPerSec>
+    <!-- Processing timeout - Number of seconds. A value of zero disables the mechanism. -->
+    <iwlm:processingTimeoutSec></iwlm:processingTimeoutSec>
+    <!-- Processing timeout action - none or restartExecutionGroup.  -->
+    <iwlm:processingTimeoutAction></iwlm:processingTimeoutAction>
+    <!-- Additional instances - Number of additional message flow instances.-->
+    <iwlm:additionalInstances></iwlm:additionalInstances>
+    <!-- Start instances when flow starts - true or false.-->
+    <iwlm:startInstancesWhenFlowStarts></iwlm:startInstancesWhenFlowStarts>
+    <!-- Commit count - Numnber of transactions to execute before commiting.-->
+    <iwlm:commitCount></iwlm:commitCount>
+    <!-- Commit interval- Nunber of milliseconds to wait before commiting.-->
+    <iwlm:commitInterval></iwlm:commitInterval>
+    <!-- Start mode - maintained, manual, or automatic -->
+    <iwlm:startMode></iwlm:startMode>
+  </iwlm:workloadManagement>
+</wsp:Policy>

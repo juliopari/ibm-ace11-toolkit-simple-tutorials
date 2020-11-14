@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: PolicyQuery; singleton:=true
+Bundle-Name: PolicyQuery Plug-in
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: com.ibm.etools.mft.api,com.ibm.etools.mft.util.ui,com.
+ ibm.etools.mft.config
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: PolicyQuery Provider
+

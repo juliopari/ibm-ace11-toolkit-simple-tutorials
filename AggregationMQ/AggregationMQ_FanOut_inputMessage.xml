@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <MQInputMessage timestamp="1485809125487" nodeId="FCMComposite_1_1" name="InputMessage" id="1485809125487-7">
+        <plainText>%3COverallInputMessage+xmlns%3D%22http%3A%2F%2Fwww.ibm.com%2FExample%22%3E%0D%0A%3CField1%3Edata+for+backend1%3C%2FField1%3E%0D%0A%3CField2%3Edata+for+backend2%3C%2FField2%3E%0D%0A%3C%2FOverallInputMessage%3E</plainText>
+        <MessageHeader backoutCount="0" characterSet="0" encoding="0" expiry="-1" feedback="0" messageFlags="0" messageType="8" messageSequenceNumber="1" offset="0" originalLength="-1" persistence="2" priority="-1" putApplicationType="0" report="0"/>
+    </MQInputMessage>
+</MessagePool>

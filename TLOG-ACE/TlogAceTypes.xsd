@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ******************************************************************
+	* Permission has been granted to IBM by Toshiba Global Commerce Solutions to publish the
+	* following schema which contains material derived from the SurePOS Application Client/Server
+	* Environment for 4690 OS, Version 7 Release 5 Programming Reference.
+	*
+	* Toshiba Global Commerce Solutions and IBM hereby grant permission, to those obtaining a copy
+	* of these materials to use, copy and modify the materials solely for use in DFDL processors.
+	*
+	* © Copyright Toshiba Global Commerce Solutions, 2015
+	*
+	* © Copyright International Business Machines Corporation, 2015.
+	*
+	*********************************************************************
+	* Version 1.3 	TlogAceTypes.xsd
+	*
+	* This DFDL schema is for use with the IIB v10 DFDL TLOG tutorial.
+	*
+	* This DFDL schema is supplied by IBM. It provides common DFDL types for
+	* 4690 point-of-sale transaction log (TLog) data (ACE format).
+	*
+	********************************************************************* 
+	*
+	* This DFDL schema is supplied by IBM. It provides a set of types
+	* to assist in the creation of DFDL schemas that model
+	* 4690 point-of-sale transaction log (TLog) data (ACE format).
+	* 
+	******************************************************************* -->
+	<xs:schema xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
+	           xmlns:fmt="http://www.ibm.com/dfdl/TlogAceFormat" 
+	           xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+	           xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" 
+	           xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" 
+	           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:import namespace="http://www.ibm.com/dfdl/TlogAceFormat" schemaLocation="TlogAceFormat.xsd"/>
+
+    <xs:annotation>
+		<xs:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="fmt:TlogAceFormat"/>
+		</xs:appinfo>
+	</xs:annotation>
+
+    <xs:complexType name="type_4ByteBitField_Desc">
+      <xs:sequence>
+        <xs:element name="Bits_31_0" type="xs:decimal"/>
+		<!-- x'00000001' is Bit_31, x'80000000' is Bit_0 -->
+      </xs:sequence>
+    </xs:complexType>
+  
+    <xs:complexType name="type_2ByteBitField_ByteReversedLittleEndian">
+      <xs:sequence>
+        <xs:element name="Bits_0_15_LittleEndian" type="xs:decimal"/>
+		<!-- x'0100' is Bit_0, x'8000' is Bit_7, x'0080' is Bit_15, x'0001' is Bit_8  -->
+      </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="type_4ByteBitField">
+        <xs:sequence>
+        	<xs:element name="Bits_0_31" type="xs:decimal"/>
+			<!-- x'00000001' is Bit_0, x'80000000' is Bit_31 -->
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="type_3ByteBitField">
+        <xs:sequence>
+        	<xs:element name="Bits_0_23" type="xs:decimal"/>
+			<!-- x'000001' is Bit_0, x'800000' is Bit_23 -->
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="type_1ByteBitField">
+        <xs:sequence>
+        	<xs:element name="Bits_0_7" type="xs:decimal"/>
+			<!-- x'01' is Bit_0, x'80' is Bit_7 -->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="type_2ByteBitField">
+        <xs:sequence>
+        	<xs:element name="Bits_0_15" type="xs:decimal"/>
+			<!-- x'0001' is Bit_0, x'8000' is Bit_15 -->
+        </xs:sequence>
+    </xs:complexType>
+    
+                  
+  	<xs:simpleType name="type_PD">
+  		<xs:restriction base="xs:decimal"/>
+  	</xs:simpleType>
+  	
+  	  	
+  	<xs:simpleType name="type_PL">
+  		<xs:restriction base="xs:long"/>
+  	</xs:simpleType>
+  	
+  	<xs:simpleType name="type_PI">
+  		<xs:restriction base="xs:int"/>
+  	</xs:simpleType>
+  	
+  	<xs:simpleType name="type_PS">
+  		<xs:restriction base="xs:hexBinary"/>
+  	</xs:simpleType>
+  	
+  	<xs:simpleType dfdl:representation="text" name="type_ASCII">
+  		<xs:restriction base="xs:string"/>
+  	</xs:simpleType>
+  	
+  	<xs:simpleType dfdl:representation="text" dfdl:encoding="ISO-8859-1" name="type_String">
+  		<xs:restriction base="xs:string"/>
+  	</xs:simpleType>
+  	
+  	
+</xs:schema>

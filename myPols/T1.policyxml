@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="Timer" policyName="T1" policyTemplate="Timer">
+    <queuePrefix></queuePrefix>
+    <timeoutInterval>5</timeoutInterval>
+  </policy>
+</policies>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="mbsharedlib://DataLibrary/SaleMessage.xsd"/>
+    <output path="mbsharedlib://DataLibrary/SaleReport.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://iib.tutorial/salesMessage"/>
+        <namespace kind="supplement" prefix="out" uri="http://iib.tutorial/sales/report"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="TCPIPClient_Mapping">
+        <input namespace="http://iib.tutorial/salesMessage" path="mb:msg(SaleMessage,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://iib.tutorial/sales/report" path="mb:msg(SalesReport,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+            <override>
+                <assign value="{DataLibrary}">
+                    <output path="$MessageAssembly1/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <foreach>
+            <input path="$MessageAssembly/SaleMessage/SaleList/Invoice[1]"/>
+            <output path="$MessageAssembly1/SalesReport/SalesRecord"/>
+            <move>
+                <input path="Initial[1]"/>
+                <output path="FirstName"/>
+            </move>
+            <move>
+                <input path="Surname"/>
+                <output path="LastName"/>
+            </move>
+            <move>
+                <input path="Balance"/>
+                <output path="Total"/>
+            </move>
+            <foreach>
+                <input path="Item"/>
+                <output path="Item"/>
+                <move>
+                    <input path="Description"/>
+                    <output path="Description"/>
+                </move>
+                <move>
+                    <input path="Category"/>
+                    <output path="Category"/>
+                </move>
+                <move>
+                    <input path="Price"/>
+                    <output path="Price"/>
+                </move>
+                <move>
+                    <input path="Quantity"/>
+                    <output path="Quantity"/>
+                </move>
+            </foreach>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

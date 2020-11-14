@@ -1,0 +1,21 @@
+
+
+CREATE COMPUTE MODULE AggregationHTTPAsync_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot.Properties = InputRoot.ComIbmAggregateReplyBody.Backend1.Properties;		
+		DECLARE Backend1Ref REFERENCE TO InputRoot.ComIbmAggregateReplyBody.Backend1.DFDL.CSV.record;
+		DECLARE Backend2Ref REFERENCE TO InputRoot.ComIbmAggregateReplyBody.Backend2.DFDL.CSV.record;
+		CREATE LASTCHILD OF OutputRoot DOMAIN('XMLNSC');
+		SET OutputRoot.XMLNSC.Message.Backend1.FieldA = Backend1Ref.field1;
+		SET OutputRoot.XMLNSC.Message.Backend1.FieldB = Backend1Ref.field2;
+		SET OutputRoot.XMLNSC.Message.Backend1.FieldC = Backend1Ref.field3;
+		SET OutputRoot.XMLNSC.Message.Backend2.FieldA = Backend2Ref.field1;
+		SET OutputRoot.XMLNSC.Message.Backend2.FieldB = Backend2Ref.field2;
+		SET OutputRoot.XMLNSC.Message.Backend2.FieldC = Backend2Ref.field3;
+		
+		RETURN TRUE;
+	END;
+
+END MODULE;

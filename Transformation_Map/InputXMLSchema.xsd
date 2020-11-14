@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <element name="SaleEnvelope">
+	    <complexType>
+	    	<sequence>
+	    		<element name="Header" maxOccurs="1" minOccurs="1">
+	    			<complexType>
+				    	<sequence>
+				    		<element name="SaleListCount" type="string" maxOccurs="1" minOccurs="1"></element>
+				    		<element name="TransformationType" type="string" maxOccurs="1" minOccurs="1"></element>
+				    	</sequence>
+			    	</complexType>
+	    		</element>
+	    		<element name="SaleList" maxOccurs="1" minOccurs="1">
+    			    <complexType>
+				    	<sequence>
+				    		<element name="Invoice" maxOccurs="unbounded" minOccurs="1">
+				    		    <complexType>
+							    	<sequence>
+							    		<element name="Initial" type="string" maxOccurs="2" minOccurs="2"></element>
+							    		<element name="Surname" type="string" maxOccurs="1" minOccurs="1"></element>
+							    		<element name="Item" maxOccurs="unbounded" minOccurs="1">
+										    <complexType>
+										    	<sequence>
+										    		<element name="Code" type="int" maxOccurs="3" minOccurs="3"></element>
+										    		<element name="Description" type="string" maxOccurs="1" minOccurs="1"></element>
+										    		<element name="Category" type="string" maxOccurs="1" minOccurs="1"></element>
+										    		<element name="Price" type="double" maxOccurs="1" minOccurs="1"></element>
+										    		<element name="Quantity" type="int" maxOccurs="1" minOccurs="1"></element>
+										    	</sequence>
+										    </complexType>
+										    </element>
+							    		<element name="Balance" type="double" maxOccurs="1" minOccurs="1"></element>
+							    		<element name="Currency" type="string" maxOccurs="1" minOccurs="0"></element>
+							    	</sequence>
+							    </complexType>
+				    		</element>
+				    	</sequence>
+				    </complexType>
+	    		</element>
+	    		<element name="Trailer" maxOccurs="1" minOccurs="0">
+				    <complexType>
+				    	<sequence>
+				    		<element name="CompletionTime" type="string" maxOccurs="1" minOccurs="1"></element>
+				    	</sequence>
+				    </complexType>
+    			</element>
+	    	</sequence>
+	    </complexType>
+	</element>
+</schema>

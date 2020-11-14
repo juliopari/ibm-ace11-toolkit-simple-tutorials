@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var2"/>
+    <input derivedFrom="MB:JSON_schema_in_json_file" path="/Account.json" var="var"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var3"/>
+    <output derivedFrom="MB:JSON_schema_in_json_file" path="/Account.json" var="var1"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/iib/msl/json"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="Salesforce_Retrieve_Select_Fields">
+        <input namespace="http://www.ibm.com/iib/msl/json" path="$var2/mb:msg(JSON,assembly,JSON,Properties)" var="ComIbmMessageAssembly_JSON">
+            <cast derivedFrom="MB:JSON_TYPE" path="$ComIbmMessageAssembly_JSON/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONArray_Account" ref="var"/>
+        </input>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var3/mb:msg(JSON,assembly,JSON,Properties)" var="ComIbmMessageAssembly_JSON1">
+            <cast derivedFrom="MB:JSON_TYPE" path="$ComIbmMessageAssembly_JSON1/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONArray_Account" ref="var1"/>
+        </output>
+        <move>
+            <input path="$ComIbmMessageAssembly_JSON/Properties"/>
+            <output path="$ComIbmMessageAssembly_JSON1/Properties"/>
+        </move>
+        <foreach>
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/Item"/>
+            <output path="$ComIbmMessageAssembly_JSON1/JSON/spath('Data',2)/Item"/>
+            <move automap="true">
+                <input path="Id"/>
+                <output path="Id"/>
+            </move>
+            <move automap="true">
+                <input path="AccountNumber"/>
+                <output path="AccountNumber"/>
+            </move>
+            <move automap="true">
+                <input path="AccountSource"/>
+                <output path="AccountSource"/>
+            </move>
+            <move automap="true">
+                <input path="Active__c"/>
+                <output path="Active__c"/>
+            </move>
+            <move automap="true">
+                <input path="AnnualRevenue"/>
+                <output path="AnnualRevenue"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/city"/>
+                <output path="BillingAddress/city"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/country"/>
+                <output path="BillingAddress/country"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/countryCode"/>
+                <output path="BillingAddress/countryCode"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/geocodeAccuracy"/>
+                <output path="BillingAddress/geocodeAccuracy"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/postalCode"/>
+                <output path="BillingAddress/postalCode"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/state"/>
+                <output path="BillingAddress/state"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/stateCode"/>
+                <output path="BillingAddress/stateCode"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/street"/>
+                <output path="BillingAddress/street"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/latitude"/>
+                <output path="BillingAddress/latitude"/>
+            </move>
+            <move automap="true">
+                <input path="BillingAddress/longitude"/>
+                <output path="BillingAddress/longitude"/>
+            </move>
+            <move automap="true">
+                <input path="CleanStatus"/>
+                <output path="CleanStatus"/>
+            </move>
+            <move automap="true">
+                <input path="CustomerPriority__c"/>
+                <output path="CustomerPriority__c"/>
+            </move>
+            <move automap="true">
+                <input path="DandbCompanyId"/>
+                <output path="DandbCompanyId"/>
+            </move>
+            <move automap="true">
+                <input path="Description"/>
+                <output path="Description"/>
+            </move>
+            <move automap="true">
+                <input path="DunsNumber"/>
+                <output path="DunsNumber"/>
+            </move>
+            <move automap="true">
+                <input path="Fax"/>
+                <output path="Fax"/>
+            </move>
+            <move automap="true">
+                <input path="Industry"/>
+                <output path="Industry"/>
+            </move>
+            <move automap="true">
+                <input path="MasterRecordId"/>
+                <output path="MasterRecordId"/>
+            </move>
+            <move automap="true">
+                <input path="NaicsCode"/>
+                <output path="NaicsCode"/>
+            </move>
+            <move automap="true">
+                <input path="NaicsDesc"/>
+                <output path="NaicsDesc"/>
+            </move>
+            <move automap="true">
+                <input path="Name"/>
+                <output path="Name"/>
+            </move>
+            <move automap="true">
+                <input path="NumberOfEmployees"/>
+                <output path="NumberOfEmployees"/>
+            </move>
+            <move automap="true">
+                <input path="NumberofLocations__c"/>
+                <output path="NumberofLocations__c"/>
+            </move>
+            <move automap="true">
+                <input path="OwnerId"/>
+                <output path="OwnerId"/>
+            </move>
+            <move automap="true">
+                <input path="Ownership"/>
+                <output path="Ownership"/>
+            </move>
+            <move automap="true">
+                <input path="ParentId"/>
+                <output path="ParentId"/>
+            </move>
+            <move automap="true">
+                <input path="Phone"/>
+                <output path="Phone"/>
+            </move>
+            <move automap="true">
+                <input path="PhotoUrl"/>
+                <output path="PhotoUrl"/>
+            </move>
+            <move automap="true">
+                <input path="Rating"/>
+                <output path="Rating"/>
+            </move>
+            <move automap="true">
+                <input path="SLAExpirationDate__c"/>
+                <output path="SLAExpirationDate__c"/>
+            </move>
+            <move automap="true">
+                <input path="SLASerialNumber__c"/>
+                <output path="SLASerialNumber__c"/>
+            </move>
+            <move automap="true">
+                <input path="SLA__c"/>
+                <output path="SLA__c"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/city"/>
+                <output path="ShippingAddress/city"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/country"/>
+                <output path="ShippingAddress/country"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/countryCode"/>
+                <output path="ShippingAddress/countryCode"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/geocodeAccuracy"/>
+                <output path="ShippingAddress/geocodeAccuracy"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/postalCode"/>
+                <output path="ShippingAddress/postalCode"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/state"/>
+                <output path="ShippingAddress/state"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/stateCode"/>
+                <output path="ShippingAddress/stateCode"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/street"/>
+                <output path="ShippingAddress/street"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/latitude"/>
+                <output path="ShippingAddress/latitude"/>
+            </move>
+            <move automap="true">
+                <input path="ShippingAddress/longitude"/>
+                <output path="ShippingAddress/longitude"/>
+            </move>
+            <move automap="true">
+                <input path="Sic"/>
+                <output path="Sic"/>
+            </move>
+            <move automap="true">
+                <input path="SicDesc"/>
+                <output path="SicDesc"/>
+            </move>
+            <move automap="true">
+                <input path="Site"/>
+                <output path="Site"/>
+            </move>
+            <move automap="true">
+                <input path="TickerSymbol"/>
+                <output path="TickerSymbol"/>
+            </move>
+            <move automap="true">
+                <input path="Tradestyle"/>
+                <output path="Tradestyle"/>
+            </move>
+            <move automap="true">
+                <input path="Type"/>
+                <output path="Type"/>
+            </move>
+            <move automap="true">
+                <input path="UpsellOpportunity__c"/>
+                <output path="UpsellOpportunity__c"/>
+            </move>
+            <move automap="true">
+                <input path="Website"/>
+                <output path="Website"/>
+            </move>
+            <move automap="true">
+                <input path="YearStarted"/>
+                <output path="YearStarted"/>
+            </move>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

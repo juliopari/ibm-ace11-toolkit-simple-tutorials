@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/ExampleSchema.xsd"/>
+    <output path="/ExampleSchema.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/Example"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="AggregationMQ_FanOut_Mapping___Backend2">
+        <input namespace="http://www.ibm.com/Example" path="mb:msg(OverallInputMessage,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_OverallInputMessage"/>
+        <output namespace="http://www.ibm.com/Example" path="mb:msg(BackendMessage2,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_BackendMessage2"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_OverallInputMessage/Properties"/>
+            <output path="$ComIbmMessageAssembly_BackendMessage2/Properties"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_OverallInputMessage/OverallInputMessage/Field2"/>
+            <output path="$ComIbmMessageAssembly_BackendMessage2/BackendMessage2/Field"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

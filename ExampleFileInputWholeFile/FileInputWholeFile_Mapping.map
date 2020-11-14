@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/FileXML.xsd"/>
+    <output path="mbsharedlib://FileCSV/FileCSV.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://www.ibm.com/ace/dev/FileXML"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FileInputWholeFile_Mapping">
+        <input namespace="http://www.ibm.com/ace/dev/FileXML" path="mb:msg(Message,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Message"/>
+        <output path="mb:msg(FileCSV,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_FileCSV"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Properties"/>
+            <output path="$ComIbmMessageAssembly_FileCSV/Properties"/>
+            <override>
+                <assign value="{FileCSV}">
+                    <output path="$ComIbmMessageAssembly_FileCSV/Properties/MessageSet"/>
+                </assign>
+                <assign value="{}:FileCSV">
+                    <output path="$ComIbmMessageAssembly_FileCSV/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Field1"/>
+            <output path="$ComIbmMessageAssembly_FileCSV/FileCSV/record/field1"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Field2"/>
+            <output path="$ComIbmMessageAssembly_FileCSV/FileCSV/record/field2"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Field3"/>
+            <output path="$ComIbmMessageAssembly_FileCSV/FileCSV/record/field3"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Field4"/>
+            <output path="$ComIbmMessageAssembly_FileCSV/FileCSV/record/field4"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Field5"/>
+            <output path="$ComIbmMessageAssembly_FileCSV/FileCSV/record/field5"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

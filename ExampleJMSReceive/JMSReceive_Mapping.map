@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/BlobMessage.xsd"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/BlobMessage.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="JMSReceive_Mapping">
+        <input path="mb:msg(BLOB,assembly,BLOB,Properties,JMSTransport)" var="ComIbmMessageAssembly_BLOB"/>
+        <output path="mb:msg(BLOB,assembly,BLOB,Properties)" var="ComIbmMessageAssembly_BLOB1"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_BLOB/Properties"/>
+            <output path="$ComIbmMessageAssembly_BLOB1/Properties"/>
+        </move>
+        <expression>
+            <output path="$ComIbmMessageAssembly_BLOB1/BLOB/text()"/>
+            <code lang="xpath">iib:hexBinaryValue('There was no message found on the JMS queue')</code>
+        </expression>
+    </mappingDeclaration>
+</mappingRoot>

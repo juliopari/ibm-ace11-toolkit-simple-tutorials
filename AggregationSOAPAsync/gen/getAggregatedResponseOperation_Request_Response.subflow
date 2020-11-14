@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmAggregateControl.msgnode="ComIbmAggregateControl.msgnode" xmlns:ComIbmAggregateReply.msgnode="ComIbmAggregateReply.msgnode" xmlns:ComIbmAggregateRequest.msgnode="ComIbmAggregateRequest.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ComIbmSOAPAsyncRequest.msgnode="ComIbmSOAPAsyncRequest.msgnode" xmlns:ComIbmSOAPAsyncResponse.msgnode="ComIbmSOAPAsyncResponse.msgnode"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="gen/getAggregatedResponseOperation_Request_Response.subflow" nsPrefix="gen_getAggregatedResponseOperation_Request_Response.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="getAggregatedResponseOperation_Request_Response" bundleName="gen/getAggregatedResponseOperation_Request_Response" pluginId="AggregationSOAPAsync"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AggregationSOAPAsync/icons/full/obj16/getAggregatedResponseOperation_Request_Response"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AggregationSOAPAsync/icons/full/obj30/getAggregatedResponseOperation_Request_Response"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="54,25">
+        <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="gen/getAggregatedResponseOperation_Request_Response" pluginId="AggregationSOAPAsync"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="494,190">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="gen/getAggregatedResponseOperation_Request_Response" pluginId="AggregationSOAPAsync"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateControl.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="136,25" aggregateName="AggregationSOAPAsync" timeoutInterval="0" timeoutLocation="$LocalEnvironment/Aggregation/Timeout">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Control"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="273,21" mappingExpression="msl://{gen}#getAggregatedResponseOperation_Request_Response_Mapping___Backend1">
+        <translation xmi:type="utility:ConstantString" string="Mapping - Backend1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="274,83" mappingExpression="msl://{gen}#getAggregatedResponseOperation_Request_Response_Mapping___Backend2">
+        <translation xmi:type="utility:ConstantString" string="Mapping - Backend2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPAsyncRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="406,25" asyncResponseCorrelator="SOAPAsyncRequest-Backend1" wsdlFileName="AggregationSOAPBackend1.wsdl" selectedPortType="AggregationSOAPBackend1" selectedBinding="AggregationSOAPBackend1HttpBinding" selectedOperation="backendOperation1" selectedPort="AggregationSOAPBackend1HttpPort" targetNamespace="http://AggregationSOAPBackend1" messageSetProperty="{AggregationSOAPAsyncLib}" useHTTPTransport="true"
+          webServiceURL="http://localhost:7800/AggregationSOAPBackend1" sslProtocol="TLS" useAsyncSocket="true">
+        <translation xmi:type="utility:ConstantString" string="SOAPAsyncRequest - BACKEND1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPAsyncRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="407,87" asyncResponseCorrelator="SOAPAsyncRequest-Backend2" wsdlFileName="AggregationSOAPBackend2.wsdl" selectedPortType="AggregationSOAPBackend2" selectedBinding="AggregationSOAPBackend2HttpBinding" selectedOperation="backendOperation2" selectedPort="AggregationSOAPBackend2HttpPort" targetNamespace="http://AggregationSOAPBackend2" messageSetProperty="{AggregationSOAPAsyncLib}" useHTTPTransport="true"
+          webServiceURL="http://localhost:7800/AggregationSOAPBackend2" sslProtocol="TLS" useAsyncSocket="true">
+        <translation xmi:type="utility:ConstantString" string="SOAPAsyncRequest - BACKEND2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="611,29" folderName="Backend1">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Request1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="615,91" folderName="Backend2">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Request2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="380,189" computeExpression="esql://routine/gen#getAggregatedResponseOperation_Request_Response_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="57,166" asyncRequestCorrelator="SOAPAsyncRequest-Backend1">
+        <translation xmi:type="utility:ConstantString" string="SOAPAsyncResponse - BACKEND1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="57,230" asyncRequestCorrelator="SOAPAsyncRequest-Backend2">
+        <translation xmi:type="utility:ConstantString" string="SOAPAsyncResponse - BACKEND2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="262,188" aggregateName="AggregationSOAPAsync" unsolicitedTimeout="30" transactionMode="true">
+        <translation xmi:type="utility:ConstantString" string="Aggregate Reply"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sm:SaleMessage xmlns:sm="http://iib.tutorial/salesMessage" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://iib.tutorial/salesMessage SaleMessage.xsd ">
+  <sm:Header>
+    <sm:SaleListCount>1</sm:SaleListCount>
+    <sm:Hostname>localhost</sm:Hostname>
+    <sm:Port>7777</sm:Port>
+  </sm:Header>
+  <sm:SaleList>
+    <sm:Invoice>
+      <sm:Initial>J</sm:Initial>
+      <sm:Surname>Smith</sm:Surname>
+      <sm:Item>
+        <sm:Code>12345678</sm:Code>
+        <sm:Description>Cycle world - Yearly subscription</sm:Description>
+        <sm:Category>Magazine subscription</sm:Category>
+        <sm:Price>25</sm:Price>
+        <sm:Quantity>1</sm:Quantity>
+      </sm:Item>
+      <sm:Item>
+        <sm:Code>12345679</sm:Code>
+        <sm:Description>W. Shakespear - Hamlet</sm:Description>
+        <sm:Category>Books</sm:Category>
+        <sm:Price>28</sm:Price>
+        <sm:Quantity>1</sm:Quantity>
+      </sm:Item>
+      <sm:Balance>53</sm:Balance>
+    </sm:Invoice>
+  </sm:SaleList>
+  <sm:Trailer>
+    <sm:CompletionTime>12:11:15-30.12.2014</sm:CompletionTime>
+  </sm:Trailer>
+</sm:SaleMessage>

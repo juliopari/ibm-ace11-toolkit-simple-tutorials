@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/ACE/11.0.0.5/common/classes/IntegrationAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/ACE/11.0.0.5/common/jackson/lib/jackson-annotations-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/ACE/11.0.0.5/common/jackson/lib/jackson-core-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/ACE/11.0.0.5/common/jackson/lib/jackson-databind-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/ACE/11.0.0.5/common/jackson/lib/jackson-dataformat-yaml-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/ACE/11.0.0.5/common/jackson/lib/snakeyaml-1.23.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

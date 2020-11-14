@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="mbsharedlib://AggregationHTTPAsyncLib/AggregationMessage.xsd"/>
+    <output path="mbsharedlib://AggregationHTTPAsyncLib/CSV.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="AggregationHTTPAsync_Mapping___Backend1">
+        <input path="mb:msg(Message,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Message"/>
+        <output path="mb:msg(CSV,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_CSV"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Properties"/>
+            <output path="$ComIbmMessageAssembly_CSV/Properties"/>
+            <override>
+                <assign value="{AggregationHTTPAsyncLib}">
+                    <output path="$ComIbmMessageAssembly_CSV/Properties/MessageSet"/>
+                </assign>
+                <assign value="{}:CSV">
+                    <output path="$ComIbmMessageAssembly_CSV/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Backend1/FieldA"/>
+            <output path="$ComIbmMessageAssembly_CSV/CSV/record/field1"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Backend1/FieldB"/>
+            <output path="$ComIbmMessageAssembly_CSV/CSV/record/field2"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Message/Backend1/FieldC"/>
+            <output path="$ComIbmMessageAssembly_CSV/CSV/record/field3"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

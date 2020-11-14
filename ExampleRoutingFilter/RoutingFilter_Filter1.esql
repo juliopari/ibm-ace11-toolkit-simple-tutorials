@@ -1,0 +1,15 @@
+
+
+CREATE FILTER MODULE RoutingFilter_Filter1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE CountryRef REFERENCE TO Root.JSON.Data.Country;
+		IF CountryRef = 'GB' OR CountryRef = 'US' THEN
+			RETURN FALSE; -- This will cause propagation to the True terminal
+		ELSEIF CountryRef = 'DE' OR CountryRef = 'NL' THEN
+			RETURN TRUE; -- This will cause propagation to the False terminal
+		ELSE
+			RETURN NULL; -- This will cause propagation to the Unknown terminal			
+		END IF;		
+	END;
+END MODULE;

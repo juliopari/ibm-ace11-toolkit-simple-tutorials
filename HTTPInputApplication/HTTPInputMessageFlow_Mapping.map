@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+    <xsd:element name="OutputField2" nillable="true" type="xsd:string"/> 
+    <xsd:element name="OutputField1" nillable="true" type="xsd:string"/> 
+    <xsd:element name="InputField2" nillable="true" type="xsd:string"/> 
+    <xsd:element name="InputField1" nillable="true" type="xsd:string"/> 
+</xsd:schema>]]></inlinedXMLSchema>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" var="var2"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var1"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/iib/msl/json"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="HTTPInputMessageFlow_Mapping">
+        <input namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,Properties)">
+            <cast castType="userDefined" path="JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var"/>
+            <cast castType="userDefined" path="JSON/spath('Data',2)/any" qualifier="InputField1" ref="var2"/>
+            <cast castType="userDefined" path="JSON/spath('Data',2)/any" qualifier="InputField2" ref="var2"/>
+        </input>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var1/mb:msg(JSON,assembly,JSON,Properties)">
+            <cast castType="userDefined" path="JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var1"/>
+            <cast castType="userDefined" path="JSON/spath('Data',2)/any" qualifier="OutputField1" ref="var2"/>
+            <cast castType="userDefined" path="JSON/spath('Data',2)/any" qualifier="OutputField2" ref="var2"/>
+        </output>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <move>
+            <input path="JSON/spath('Data',2)/InputField2"/>
+            <output path="JSON/spath('Data',2)/OutputField2"/>
+        </move>
+        <move>
+            <input path="JSON/spath('Data',2)/InputField1"/>
+            <output path="JSON/spath('Data',2)/OutputField1"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

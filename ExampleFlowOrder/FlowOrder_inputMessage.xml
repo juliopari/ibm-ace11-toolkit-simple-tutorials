@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <InputMessage timestamp="1564760383850" nodeId="FCMComposite_1_1" name="FlowOrder" id="1564760383850-1918">
+        <plainText>%7B%22message%22%3A%22This+is+a+MiXeD+case+message%22%7D</plainText>
+    </InputMessage>
+    <InputMessage timestamp="1564760135916" nodeId="FCMComposite_1_6" name="RandomOrder" id="1564760135916-1746">
+        <plainText>%7B%22message%22%3A%22This+is+a+MiXeD+case+message%22%7D</plainText>
+    </InputMessage>
+</MessagePool>

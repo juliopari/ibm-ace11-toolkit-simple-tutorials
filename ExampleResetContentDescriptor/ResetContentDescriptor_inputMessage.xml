@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <InputMessage timestamp="1563566298759" nodeId="FCMComposite_1_1" name="InputMessage" id="1563566298759-1099">
+        <plainText>%3Cmessage%3EThis+message+is+invalid+due+to+the+closing+tag%3Cmessage%3E</plainText>
+    </InputMessage>
+</MessagePool>

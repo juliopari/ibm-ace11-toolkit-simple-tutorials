@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="gen" version="8.0.5.0" xmlns:map="gen">
+    <input path="/AggregationSOAPBackend2_InlineSchema1.xsd"/>
+    <output path="/AggregationSOAPBackend2_InlineSchema1.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://AggregationSOAPBackend2"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="backendOperation2_Request_Response_Mapping">
+        <input namespace="http://AggregationSOAPBackend2" path="mb:msg(backendOperation2,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_backendOperation2"/>
+        <output namespace="http://AggregationSOAPBackend2" path="mb:msg(backendOperation2Response,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_backendOperation2Response"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_backendOperation2/Properties"/>
+            <output path="$ComIbmMessageAssembly_backendOperation2Response/Properties"/>
+        </move>
+        <function ref="fn:upper-case">
+            <input path="$ComIbmMessageAssembly_backendOperation2/backendOperation2/input2" var="input2"/>
+            <output path="$ComIbmMessageAssembly_backendOperation2Response/backendOperation2Response/output2"/>
+            <param name="string" value="$input2"/>
+        </function>
+    </mappingDeclaration>
+</mappingRoot>

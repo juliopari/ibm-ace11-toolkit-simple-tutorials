@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <InputMessage timestamp="1442325252204" nodeId="FCMComposite_1_1" name="Hants" id="1442325252204-1877">
+        <plainText>%7B%22Lookup%22%3A%7B%22CountyAbbr%22%3A%22Hants%22%7D%7D</plainText>
+    </InputMessage>
+    <InputMessage timestamp="1442307982339" nodeId="FCMComposite_1_1" name="Berks" id="1442307982339-1640">
+        <plainText>%7B%22Lookup%22%3A%7B%22CountyAbbr%22%3A%22Berks%22%7D%7D</plainText>
+    </InputMessage>
+</MessagePool>

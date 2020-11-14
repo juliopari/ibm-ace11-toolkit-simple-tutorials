@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://iib.tutorial/sales/report" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sr="http://iib.tutorial/sales/report">
+  <xsd:element name="Category" type="xsd:string"/>
+  <xsd:element name="Description" type="xsd:string"/>
+  <xsd:element name="Quantity" type="xsd:string"/>
+  <xsd:element name="Item">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="sr:Description"/>
+        <xsd:element ref="sr:Category"/>
+        <xsd:element ref="sr:Price"/>
+        <xsd:element ref="sr:Quantity"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Price" type="xsd:string"/>
+  <xsd:element name="SalesReport">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="sr:SalesRecord"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FirstName" type="xsd:string"/>
+  <xsd:element name="SalesRecord">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="sr:FirstName"/>
+        <xsd:element ref="sr:LastName"/>
+        <xsd:element maxOccurs="unbounded" ref="sr:Item"/>
+        <xsd:element ref="sr:Total"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LastName" type="xsd:string"/>
+  <xsd:element name="Total" type="xsd:string"/>
+</xsd:schema>

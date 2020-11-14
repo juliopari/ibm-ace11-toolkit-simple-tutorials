@@ -1,0 +1,13 @@
+
+
+Importing file: C:\Users\IBM_ADMIN\IBM\IIBT10\workspaceTestAsyncCallableAggregation\AggregationSOAPBackend2\AggregationSOAPBackend2.wsdl
+
+The WSDL import will proceed with bindings AggregationSOAPBackend2HttpBinding.
+Creating wsdl schema document for platform:/resource/AggregationSOAPBackend2/AggregationSOAPBackend2.wsdl.
+Parsing wsdl binding {http://AggregationSOAPBackend2}AggregationSOAPBackend2HttpBinding.
+Parsing wsdl binding input backendOperation2.
+Parsing wsdl binding output backendOperation2.
+Processing doc style for operation backendOperation2.
+Populating WSDL schema AggregationSOAPBackend2.xsd.
+Creating file AggregationSOAPBackend2.xsd in the workspace.
+Copying source WSDL AggregationSOAPBackend2.wsdl to AggregationSOAPBackend2.wsdl.

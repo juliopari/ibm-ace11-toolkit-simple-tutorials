@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/BlobMessage.xsd"/>
+    <output path="/RecordFile.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FileInputFixedLength_Mapping">
+        <input path="mb:msg(BLOB,assembly,BLOB,LocalEnvironment,Properties)" var="ComIbmMessageAssembly_BLOB"/>
+        <output path="mb:msg(Message,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_BLOB/Properties"/>
+            <output path="$MessageAssembly/Properties"/>
+        </move>
+        <expression>
+            <input path="$ComIbmMessageAssembly_BLOB/BLOB/text()" var="value"/>
+            <output path="$MessageAssembly/Message/RecordData" var="RecordData"/>
+            <code lang="xpath">substring-before(codepoints-to-string(&#13;
+   for $index  in (1 to string-length(string($value)))[. mod 2 = 1],&#13;
+       $hinibble in (substring(string($value), $index, 1)),&#13;
+       $lonibble in (substring(string($value), $index + 1, 1))&#13;
+   return&#13;
+       (16 * string-length(substring-before('0123456789ABCDEF', upper-case($hinibble)))) +&#13;
+       string-length(substring-before('0123456789ABCDEF', upper-case($lonibble)))),' ')</code>
+        </expression>
+        <move>
+            <input path="$ComIbmMessageAssembly_BLOB/LocalEnvironment/File/Record"/>
+            <output path="$MessageAssembly/Message/RecordNumber"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

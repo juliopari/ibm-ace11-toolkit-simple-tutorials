@@ -1,0 +1,41 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "AggregationRESTBackend2",
+    "version" : "1.0.0",
+    "description" : "AggregationRESTBackend2"
+  },
+  "paths" : {
+    "/Backend2" : {
+      "get" : {
+        "operationId" : "getBackend2",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/Backend2"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve Backend2",
+        "parameters" : [ {
+          "name" : "input2",
+          "in" : "query",
+          "type" : "string"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/aggregationrestbackend2/v1",
+  "definitions" : {
+    "Backend2" : {
+      "type" : "object",
+      "properties" : {
+        "output2" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

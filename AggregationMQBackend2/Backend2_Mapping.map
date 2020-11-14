@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/Backend2Schema.xsd"/>
+    <output path="/Backend2Schema.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/Example"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="Backend2_Mapping">
+        <input namespace="http://www.ibm.com/Example" path="mb:msg(BackendMessage2,assembly,XMLNSC,Properties,MQMD)" var="ComIbmMessageAssembly_BackendMessage2"/>
+        <output namespace="http://www.ibm.com/Example" path="mb:msg(BackendMessage2,assembly,XMLNSC,Properties,MQMD)" var="ComIbmMessageAssembly_BackendMessage21"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_BackendMessage2/Properties"/>
+            <output path="$ComIbmMessageAssembly_BackendMessage21/Properties"/>
+        </move>
+        <function ref="fn:upper-case">
+            <input path="$ComIbmMessageAssembly_BackendMessage2/BackendMessage2/Field" var="Field"/>
+            <output path="$ComIbmMessageAssembly_BackendMessage21/BackendMessage2/Field"/>
+            <param name="string" value="$Field"/>
+        </function>
+        <move>
+            <input path="$ComIbmMessageAssembly_BackendMessage2/MQMD/MsgId"/>
+            <output path="$ComIbmMessageAssembly_BackendMessage21/MQMD/CorrelId"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

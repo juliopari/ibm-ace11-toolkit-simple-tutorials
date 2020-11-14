@@ -1,0 +1,13 @@
+
+
+CREATE COMPUTE MODULE getAggregatedResponse_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN		
+		SET OutputRoot.Properties = InputRoot.ComIbmAggregateReplyBody.Backend1.Properties;		
+		CREATE LASTCHILD OF OutputRoot DOMAIN('JSON');
+		SET OutputRoot.JSON.Data.ResponseBackend1 = InputRoot.ComIbmAggregateReplyBody.Backend1.JSON.Data.Field1;
+		SET OutputRoot.JSON.Data.ResponseBackend2 = InputRoot.ComIbmAggregateReplyBody.Backend2.JSON.Data.Field2;
+		RETURN TRUE;
+	END;
+
+END MODULE;

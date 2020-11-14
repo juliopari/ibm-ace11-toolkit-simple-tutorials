@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmJMSClientInput.msgnode="ComIbmJMSClientInput.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="JMSInput.msgflow" nsPrefix="JMSInput.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="JMSInput" bundleName="JMSInput" pluginId="ExampleJMSInput"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ExampleJMSInput/icons/full/obj16/JMSInput.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ExampleJMSInput/icons/full/obj30/JMSInput.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmJMSClientInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="57,71" sourceQueueName="jmsexample" locationJndiBindings="file:/C:/JNDI-Directory" connectionFactoryName="exampleqcf">
+        <translation xmi:type="utility:ConstantString" string="JMS Input - jmsexample"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="267,71" destination="file" filePath="C:\temp\TraceJMSInput.txt" pattern="================================================================================&#xD;&#xA;The Trace node was reached at ${CURRENT_TIMESTAMP}&#xD;&#xA;The message from the JMSInput node queue is placed in the Root of the logical message tree&#xD;&#xA;Casting this message back to a string shows that the data from the queue was:&#xD;&#xA;${CAST(Root.BLOB.BLOB AS CHAR CCSID 1208)}&#xD;&#xA;================================================================================">
+        <translation xmi:type="utility:ConstantString" string="Trace"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

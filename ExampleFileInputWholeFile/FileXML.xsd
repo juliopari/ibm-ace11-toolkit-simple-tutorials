@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/ace/dev/FileXML" xmlns:tns="http://www.ibm.com/ace/dev/FileXML" elementFormDefault="qualified">
+
+    <element name="Message" type="tns:MessageType"></element>
+    <complexType name="MessageType">
+    <sequence>
+    <element name="Field1" type="string"/>
+    <element name="Field2" type="string"/>
+    <element name="Field3" type="string"/>
+    <element name="Field4" type="string"/>
+    <element name="Field5" type="string"/>    
+    </sequence>
+    </complexType>
+    
+</schema>

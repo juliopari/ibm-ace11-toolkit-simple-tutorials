@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/Example" xmlns:tns="http://www.ibm.com/Example" elementFormDefault="qualified">
+<element name="BackendMessage1" type="tns:BackendMessage1Type"/>
+<complexType name="BackendMessage1Type">
+<sequence>
+<element name="Field" type="string"/>
+</sequence>
+</complexType>
+</schema>

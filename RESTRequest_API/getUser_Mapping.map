@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">    
+    <xsd:element name="UserNumber" type="xsd:string"/>    
+</xsd:schema>]]></inlinedXMLSchema>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/BlobMessage.xsd" var="var"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" var="var1"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var2"/>
+    <output derivedFrom="MB:JSON_schema_in_swagger_document" path="/Tutorial_swagger.json" var="var3"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="out" uri="http://www.ibm.com/iib/msl/json"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="getUser_Mapping">
+        <input derivedFrom="MB:JSON_operation_name:getUser" path="$var/mb:msg(BLOB,assembly,BLOB,Properties,LocalEnvironment)" var="ComIbmMessageAssembly_BLOB">
+            <cast derivedFrom="MB:JSON_path_query_parm:UserNumber" path="$ComIbmMessageAssembly_BLOB/LocalEnvironment/REST/Input/Parameters/any" qualifier="UserNumber" ref="var1"/>
+        </input>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var2/mb:msg(JSON,assembly,JSON,Properties)" var="ComIbmMessageAssembly_JSON">
+            <cast derivedFrom="MB:JSON_operation_response" path="$ComIbmMessageAssembly_JSON/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}Output" ref="var3"/>
+        </output>
+        <move>
+            <input path="$ComIbmMessageAssembly_BLOB/Properties" var="Properties"/>
+            <output path="$ComIbmMessageAssembly_JSON/Properties"/>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_BLOB/LocalEnvironment/REST/Input/Parameters/UserNumber[1]"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)"/>
+            <condition>
+                <if>
+                    <input path=".[1]" var="UserNumber3"/>
+                    <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)"/>
+                    <test lang="xpath">$UserNumber3 = '1'</test>
+                    <assign value="Peter">
+                        <output path="firstName"/>
+                    </assign>
+                    <move>
+                        <input path="$UserNumber3/." var="UserNumber5"/>
+                        <output path="userNumber"/>
+                    </move>
+                    <assign value="Pan">
+                        <output path="lastName"/>
+                    </assign>
+                    <assign value="Employee">
+                        <output path="userDetails"/>
+                    </assign>
+                </if>
+                <elseif>
+                    <input path=".[1]" var="UserNumber4"/>
+                    <output path="."/>
+                    <test lang="xpath">$UserNumber4 = '2'</test>
+                    <move>
+                        <input path="$UserNumber4/." var="UserNumber6"/>
+                        <output path="userNumber"/>
+                    </move>
+                    <assign value="Matilda">
+                        <output path="firstName"/>
+                    </assign>
+                    <assign value="Wormwood">
+                        <output path="lastName"/>
+                    </assign>
+                    <assign value="Explorer">
+                        <output path="userDetails"/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path=".[1]" var="UserNumber7"/>
+                    <output path="."/>
+                    <test lang="xpath">$UserNumber7 = '3'</test>
+                    <move>
+                        <input path="$UserNumber7/." var="UserNumber8"/>
+                        <output path="userNumber"/>
+                    </move>
+                    <assign value="Harry">
+                        <output path="firstName"/>
+                    </assign>
+                    <assign value="Potter">
+                        <output path="lastName"/>
+                    </assign>
+                    <assign value="Writer">
+                        <output path="userDetails"/>
+                    </assign>
+                </elseif>
+                <else>
+                    <input path=".[1]" var="UserNumber9"/>
+                    <output path="."/>
+                    <move>
+                        <input path="$UserNumber9/." var="UserNumber21"/>
+                        <output path="userNumber"/>
+                    </move>
+                    <assign value="User does not exist">
+                        <output path="firstName"/>
+                    </assign>
+                    <assign value="---">
+                        <output path="lastName"/>
+                    </assign>
+                    <assign value="---">
+                        <output path="userDetails"/>
+                    </assign>
+                </else>
+            </condition>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

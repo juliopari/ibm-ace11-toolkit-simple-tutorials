@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">      
+        <xsd:element name="CountyAbbr" type="xsd:string"/>     
+    <xsd:element name="Result" nillable="true">      
+    <xsd:complexType>      
+      <xsd:sequence>      
+        <xsd:element name="CountyFullName" nillable="true" type="xsd:string"/>      
+               </xsd:sequence>      
+    </xsd:complexType>      
+  </xsd:element>      
+    <xsd:element name="Lookup" nillable="true">      
+    <xsd:complexType>      
+      <xsd:sequence>      
+        <xsd:element name="CountyAbbr" nillable="true" type="xsd:string"/>      
+      </xsd:sequence>      
+    </xsd:complexType>      
+  </xsd:element>      
+</xsd:schema>]]></inlinedXMLSchema>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var5"/>
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" var="var2"/>
+    <input path="jar:file://!com/ibm/msl/mapping/cache/xsds/cache.xsd" var="var4"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var6"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var1"/>
+    <output path="jar:file://!com/ibm/msl/mapping/cache/xsds/cache.xsd" var="var3"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io" uri="http://www.ibm.com/iib/msl/json"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.ibm.com/msl/cache/1.0"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="LookupCountyFullName_Mapping">
+        <input path="$var5/mb:env(Environment)" var="Environment">
+            <cast castType="userDefined" path="$Environment/Variables/any" qualifier="CountyAbbr" ref="var2" var="any"/>
+        </input>
+        <input namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON)" var="ComIbmMessageAssembly_JSON">
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var" var="anyType"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="Lookup" ref="var2" var="any1"/>
+        </input>
+        <output path="$var6/mb:env(Environment)" var="Environment1">
+            <cast castType="userDefined" path="$Environment1/Variables/any" qualifier="CountyAbbr" ref="var2" var="any2"/>
+        </output>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var1/mb:msg(JSON,assembly,JSON)" var="ComIbmMessageAssembly_JSON1">
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON1/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var1" var="anyType1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON1/JSON/spath('Data',2)/any" qualifier="Result" ref="var2" var="any3"/>
+        </output>
+        <passthrough>
+            <input path="$Environment/."/>
+            <output path="$Environment1/."/>
+            <updates>
+                <local>
+                    <input path="$ComIbmMessageAssembly_JSON/."/>
+                    <output path="$Environment1/Variables"/>
+                    <move>
+                        <input path="JSON/spath('Data',2)/Lookup/CountyAbbr"/>
+                        <output path="CountyAbbr"/>
+                    </move>
+                </local>
+            </updates>
+        </passthrough>
+        <transaction>
+            <cacheGet>
+                <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/Lookup/CountyAbbr"/>
+                <output path="$var3/CacheGet"/>
+                <move>
+                    <input path="."/>
+                    <output path="Key"/>
+                </move>
+                <expression>
+                    <output path="MapName"/>
+                    <code lang="xpath">iib:getUserDefinedProperty('LookupTable_MapName')</code>
+                </expression>
+            </cacheGet>
+            <cacheReturn>
+                <input path="$var4/CacheGetReturn" var="CacheGetReturn"/>
+                <output path="$ComIbmMessageAssembly_JSON1/JSON/spath('Data',2)/Result/CountyFullName"/>
+                <move>
+                    <input path="$CacheGetReturn/Value" var="Value"/>
+                    <output path="."/>
+                    <test lang="xpath">$Value</test>
+                </move>
+            </cacheReturn>
+        </transaction>
+    </mappingDeclaration>
+</mappingRoot>

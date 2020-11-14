@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.8.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DB2Model="http:///com/ibm/db/models/db2/db2.ecore" xmlns:LUW="http:///com/ibm/db/models/db2/luw.ecore" xmlns:SQLAccessControl="http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore" xmlns:SQLExpressions="http:///org/eclipse/datatools/modelbase/sql/expressions.ecore" xmlns:SQLStatements="http:///org/eclipse/datatools/modelbase/sql/statements.ecore">
+  <LUW:LUWDatabase xmi:id="_wLF7kLH9Eem1F-WPqLJ7zQ" name="USERS" vendor="DB2 UDB" version="V9.1" schemas="_wOhDALH9Eem1F-WPqLJ7zQ _wOhDErH9Eem1F-WPqLJ7zQ" authorizationIds="_wOhDJrH9Eem1F-WPqLJ7zQ" federated="true">
+    <eAnnotations xmi:id="_wLF7kbH9Eem1F-WPqLJ7zQ" source="ConnectionURI">
+      <details xmi:id="_wLF7krH9Eem1F-WPqLJ7zQ" key="ConnectionKey" value="USERS1"/>
+    </eAnnotations>
+  </LUW:LUWDatabase>
+  <DB2Model:DB2Schema xmi:id="_wOhDALH9Eem1F-WPqLJ7zQ" name="MYSCHEMA" triggers="_wOhDAbH9Eem1F-WPqLJ7zQ" tables="_wOhDBrH9Eem1F-WPqLJ7zQ _wOhDFbH9Eem1F-WPqLJ7zQ" database="_wLF7kLH9Eem1F-WPqLJ7zQ" owner="_wOhDJrH9Eem1F-WPqLJ7zQ"/>
+  <DB2Model:DB2Trigger xmi:id="_wOhDAbH9Eem1F-WPqLJ7zQ" name="EMPLOYEES_TRIGGER" schema="_wOhDALH9Eem1F-WPqLJ7zQ" subjectTable="_wOhDBrH9Eem1F-WPqLJ7zQ" actionGranularity="ROW" insertType="true" newRow="N">
+    <dependencies xmi:id="_wOhDArH9Eem1F-WPqLJ7zQ" targetEnd="_wOhDBrH9Eem1F-WPqLJ7zQ"/>
+    <dependencies xmi:id="_wOhDA7H9Eem1F-WPqLJ7zQ" targetEnd="_wOhDFbH9Eem1F-WPqLJ7zQ"/>
+    <actionStatement xsi:type="SQLStatements:SQLStatementDefault" xmi:id="_wOhDBLH9Eem1F-WPqLJ7zQ" SQL="INSERT INTO MYSCHEMA.EVENTS (OBJECT_KEY, OBJECT_VERB, OBJECT_NAME, EVENT_PRIORITY, EVENT_TIME, EVENT_STATUS) VALUES (N.PKEY,'CREATE','EMPLOYEE',1,CURRENT_TIMESTAMP,0)"/>
+    <when xsi:type="SQLExpressions:SearchConditionDefault" xmi:id="_wOhDBbH9Eem1F-WPqLJ7zQ" SQL=""/>
+  </DB2Model:DB2Trigger>
+  <LUW:LUWTable xmi:id="_wOhDBrH9Eem1F-WPqLJ7zQ" name="EMPLOYEES" schema="_wOhDALH9Eem1F-WPqLJ7zQ" triggers="_wOhDAbH9Eem1F-WPqLJ7zQ" index="_wOhDELH9Eem1F-WPqLJ7zQ" partitionMode=" ">
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDB7H9Eem1F-WPqLJ7zQ" name="PKEY" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_wOhDCLH9Eem1F-WPqLJ7zQ" name="INTEGER" primitiveType="INTEGER"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDCbH9Eem1F-WPqLJ7zQ" name="FIRSTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wOhDCrH9Eem1F-WPqLJ7zQ" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDC7H9Eem1F-WPqLJ7zQ" name="LASTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wOhDDLH9Eem1F-WPqLJ7zQ" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDDbH9Eem1F-WPqLJ7zQ" name="COUNTRY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wOhDDrH9Eem1F-WPqLJ7zQ" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="2"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_wOhDD7H9Eem1F-WPqLJ7zQ" name="SQL190729140502450" members="_wOhDB7H9Eem1F-WPqLJ7zQ"/>
+  </LUW:LUWTable>
+  <LUW:LUWIndex xmi:id="_wOhDELH9Eem1F-WPqLJ7zQ" name="SQL190729140502440" Schema="_wOhDErH9Eem1F-WPqLJ7zQ" fillFactor="10" unique="true" systemGenerated="true" table="_wOhDBrH9Eem1F-WPqLJ7zQ" systemRequired="true">
+    <members xmi:id="_wOhDEbH9Eem1F-WPqLJ7zQ" column="_wOhDB7H9Eem1F-WPqLJ7zQ"/>
+  </LUW:LUWIndex>
+  <DB2Model:DB2Schema xmi:id="_wOhDErH9Eem1F-WPqLJ7zQ" name="SYSIBM" indices="_wOhDELH9Eem1F-WPqLJ7zQ _wOhDE7H9Eem1F-WPqLJ7zQ" database="_wLF7kLH9Eem1F-WPqLJ7zQ" owner="_wOhDJrH9Eem1F-WPqLJ7zQ"/>
+  <LUW:LUWIndex xmi:id="_wOhDE7H9Eem1F-WPqLJ7zQ" name="SQL190729141224750" Schema="_wOhDErH9Eem1F-WPqLJ7zQ" fillFactor="10" unique="true" systemGenerated="true" table="_wOhDFbH9Eem1F-WPqLJ7zQ" systemRequired="true">
+    <members xmi:id="_wOhDFLH9Eem1F-WPqLJ7zQ" column="_wOhDFrH9Eem1F-WPqLJ7zQ"/>
+  </LUW:LUWIndex>
+  <LUW:LUWTable xmi:id="_wOhDFbH9Eem1F-WPqLJ7zQ" name="EVENTS" schema="_wOhDALH9Eem1F-WPqLJ7zQ" index="_wOhDE7H9Eem1F-WPqLJ7zQ" partitionMode=" ">
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDFrH9Eem1F-WPqLJ7zQ" name="EVENT_ID" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_wOhDF7H9Eem1F-WPqLJ7zQ" name="INTEGER" primitiveType="INTEGER"/>
+      <identitySpecifier xsi:type="DB2Model:DB2IdentitySpecifier" xmi:id="_wOhDGLH9Eem1F-WPqLJ7zQ" startValue="1" increment="1" minimum="1" maximum="2147483647" cache="1"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDGbH9Eem1F-WPqLJ7zQ" name="OBJECT_KEY" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_wOhDGrH9Eem1F-WPqLJ7zQ" name="INTEGER" primitiveType="INTEGER"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDG7H9Eem1F-WPqLJ7zQ" name="OBJECT_VERB">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wOhDHLH9Eem1F-WPqLJ7zQ" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="6"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDHbH9Eem1F-WPqLJ7zQ" name="OBJECT_NAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_wOhDHrH9Eem1F-WPqLJ7zQ" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="20"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDH7H9Eem1F-WPqLJ7zQ" name="EVENT_PRIORITY">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_wOhDILH9Eem1F-WPqLJ7zQ" name="INTEGER" primitiveType="INTEGER"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDIbH9Eem1F-WPqLJ7zQ" name="EVENT_TIME">
+      <containedType xsi:type="SQLDataTypes:TimeDataType" xmi:id="_wOhDIrH9Eem1F-WPqLJ7zQ" name="TIMESTAMP" primitiveType="TIMESTAMP"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_wOhDI7H9Eem1F-WPqLJ7zQ" name="EVENT_STATUS">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_wOhDJLH9Eem1F-WPqLJ7zQ" name="INTEGER" primitiveType="INTEGER"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_wOhDJbH9Eem1F-WPqLJ7zQ" name="SQL190729141224760" members="_wOhDFrH9Eem1F-WPqLJ7zQ"/>
+  </LUW:LUWTable>
+  <SQLAccessControl:User xmi:id="_wOhDJrH9Eem1F-WPqLJ7zQ" name="SYSIBM" ownedSchema="_wOhDALH9Eem1F-WPqLJ7zQ _wOhDErH9Eem1F-WPqLJ7zQ" Database="_wLF7kLH9Eem1F-WPqLJ7zQ"/>
+</xmi:XMI>

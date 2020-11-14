@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="Message" type="MessageType"/>
+
+<xsd:complexType name="MessageType">
+	<xsd:sequence>
+		<xsd:element name="Backend1" type="BackendType"/>
+		<xsd:element name="Backend2" type="BackendType"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="BackendType">
+	<xsd:sequence>
+		<xsd:element name="FieldA" type="xsd:string"/>
+		<xsd:element name="FieldB" type="xsd:string"/>
+		<xsd:element name="FieldC" type="xsd:string"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema>

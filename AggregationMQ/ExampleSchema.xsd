@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/Example" xmlns:tns="http://www.ibm.com/Example" elementFormDefault="qualified">
+<element name="OverallInputMessage" type="tns:OverallInputMessageType"/>
+<element name="BackendMessage1" type="tns:BackendMessage1Type"/>
+<element name="BackendMessage2" type="tns:BackendMessage2Type"/>
+<element name="OverallOutputMessage" type="tns:OverallOutputMessageType"/>
+<complexType name="OverallInputMessageType">
+<sequence>
+<element name="Field1" type="string"/>
+<element name="Field2" type="string"/>
+</sequence>
+</complexType>
+<complexType name="BackendMessage1Type">
+<sequence>
+<element name="Field" type="string"/>
+</sequence>
+</complexType>
+<complexType name="BackendMessage2Type">
+<sequence>
+<element name="Field" type="string"/>
+</sequence>
+</complexType>
+<complexType name="OverallOutputMessageType">
+<sequence>
+<element name="ResponseBackend1" type="string"/>
+<element name="ResponseBackend2" type="string"/>
+</sequence>
+</complexType>
+</schema>

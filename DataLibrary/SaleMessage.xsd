@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://iib.tutorial/salesMessage" xmlns:sm="http://iib.tutorial/salesMessage">
+  <xsd:element name="Description" type="xsd:string"/>
+  <xsd:element name="Quantity" type="xsd:string"/>
+  <xsd:element name="CompletionTime" type="xsd:string"/>
+  <xsd:element name="Invoice">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="sm:Initial"/>
+        <xsd:element ref="sm:Surname"/>
+        <xsd:element maxOccurs="unbounded" ref="sm:Item"/>
+        <xsd:element ref="sm:Balance"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Trailer">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="sm:CompletionTime"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SaleListCount" type="xsd:string"/>
+  <xsd:element name="Code" type="xsd:string"/>
+  <xsd:element name="Category" type="xsd:string"/>
+  <xsd:element name="Port" type="xsd:string"/>
+  <xsd:element name="Item">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="sm:Code"/>
+        <xsd:element ref="sm:Description"/>
+        <xsd:element ref="sm:Category"/>
+        <xsd:element ref="sm:Price"/>
+        <xsd:element ref="sm:Quantity"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Header">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="sm:SaleListCount"/>
+        <xsd:element ref="sm:Hostname"/>
+        <xsd:element ref="sm:Port"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SaleMessage">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="sm:Header"/>
+        <xsd:element ref="sm:SaleList"/>
+        <xsd:element ref="sm:Trailer"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Price" type="xsd:string"/>
+  <xsd:element name="SaleList">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="sm:Invoice"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Surname" type="xsd:string"/>
+  <xsd:element name="Initial" type="xsd:string"/>
+  <xsd:element name="Balance" type="xsd:string"/>
+  <xsd:element name="Hostname" type="xsd:string"/>
+</xsd:schema>

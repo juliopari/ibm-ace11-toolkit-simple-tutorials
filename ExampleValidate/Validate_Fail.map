@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/ExampleModel.xsd"/>
+    <output path="/ExampleModel.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="Validate_Fail">
+        <input path="mb:msg(Message,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Message"/>
+        <output path="mb:msg(Message,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_Message1"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Properties"/>
+            <output path="$ComIbmMessageAssembly_Message1/Properties"/>
+        </move>
+        <assign value="The input message FAILED validation">
+            <output path="$ComIbmMessageAssembly_Message1/Message/Child"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

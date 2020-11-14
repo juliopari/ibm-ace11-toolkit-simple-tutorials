@@ -1,0 +1,57 @@
+
+
+CREATE COMPUTE MODULE ThrowException_GetLastExceptionDetail
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		DECLARE messageNumber INTEGER;
+		DECLARE messageText CHAR;
+		DECLARE messageInsert CHAR;
+		CALL getLastExceptionDetail(InputExceptionList, messageNumber, messageText, messageInsert);		
+		SET OutputRoot.JSON.Data.Message.messageNumber = messageNumber; 
+		SET OutputRoot.JSON.Data.Message.messageText = messageText;
+		SET OutputRoot.JSON.Data.Message.messageInsert = messageInsert;		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+	
+	CREATE PROCEDURE getLastExceptionDetail(IN InputTree REFERENCE, OUT messageNumber INTEGER,
+	 OUT messageText CHAR, OUT messageInsert CHAR)	
+    /****************************************************************************
+	 * A procedure that will get the details of the last exception from a message
+	 * IN InputTree:  The incoming exception list
+	 * OUT messageNumber:  The last message numberr.
+	 * OUT messageText: The last message text.
+	 * OUT messageInsert: The last message's first insert text
+	 *****************************************************************************/
+		BEGIN
+   	    	-- Create a reference to the first child of the exception list
+   	    	DECLARE ptrException REFERENCE TO InputTree.*[1];
+   	    	-- Keep looping while the moves to the child of exception list work 
+			WHILE LASTMOVE(ptrException) DO
+			-- Store the current values for the error number and text
+			IF ptrException.Number is not null THEN
+        		SET messageNumber = ptrException.Number;
+        		SET messageText = ptrException.Text;
+        		IF ptrException.Insert.Text IS NOT NULL THEN
+        			SET messageInsert = ptrException.Insert.Text;
+        		END IF;
+  			END IF;
+  			-- Now move to the last child which should be the next exceptionlist
+			MOVE ptrException LASTCHILD;
+			END WHILE; 
+		END;	
+END MODULE;

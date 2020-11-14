@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCollector.msgnode="ComIbmCollector.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ComIbmWSInput.msgnode="ComIbmWSInput.msgnode" xmlns:ComIbmWSReply.msgnode="ComIbmWSReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="Collector.msgflow" nsPrefix="Collector.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="Collector" bundleName="Collector" pluginId="ExampleCollector"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ExampleCollector/icons/full/obj16/Collector.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ExampleCollector/icons/full/obj30/Collector.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmCollector.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="167,105" collectionName="ExampleCollector" collectionExpiry="300">
+        <inTerminals terminalNodeID="In1" dynamic="true" label="In1"/>
+        <inTerminals terminalNodeID="In2" dynamic="true" label="In2"/>
+        <translation xmi:type="utility:ConstantString" string="Collector"/>
+        <eventHandlerPropertyTable terminal="In1" quantity="1" correlationPath="" correlationPattern=""/>
+        <eventHandlerPropertyTable terminal="In2" quantity="1" correlationPath="" correlationPattern=""/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="31,52" URLSpecifier="/Input1" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="/Input1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="115,21">
+        <translation xmi:type="utility:ConstantString" string="HTTP Reply1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="318,101" destination="file" filePath="C:\temp\TraceCollector_Out.txt" pattern="================================================================================&#xD;&#xA;The Out terminal of the Collector node has fired at ${CURRENT_TIMESTAMP}&#xD;&#xA;The combined message from the two collected messages is: &#xD;&#xA;${FIELDVALUE(Root.Collection.In1.JSON.Data.Message1)} ${FIELDVALUE(Root.Collection.In2.JSON.Data.Message2)}&#xD;&#xA;The Root of the logical tree is:&#xD;&#xA;${Root}&#xD;&#xA;================================================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceCollector_Out.txt"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="296,164" destination="file" filePath="C:\temp\TraceCollector_Expire.txt" pattern="================================================================================&#xD;&#xA;The Expire terminal of the Collector node has fired at ${CURRENT_TIMESTAMP}&#xD;&#xA;The Root of the logical tree is:&#xD;&#xA;${Root}&#xD;&#xA;================================================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceCollector_Expire.txt"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="256,229" destination="file" filePath="C:\temp\TraceCollector_Catch.txt" pattern="================================================================================&#xD;&#xA;The Catch terminal of the Collector node has fired at ${CURRENT_TIMESTAMP}&#xD;&#xA;The Root of the logical tree is:&#xD;&#xA;${Root}&#xD;&#xA;================================================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceCollector_Catch.txt"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="321,36" destination="file" filePath="C:\temp\TraceCollector_Failure.txt" pattern="================================================================================&#xD;&#xA;The Failure terminal of the Collector node has fired at ${CURRENT_TIMESTAMP}&#xD;&#xA;The Root of the logical tree is:&#xD;&#xA;${Root}&#xD;&#xA;================================================================================">
+        <translation xmi:type="utility:ConstantString" string="TraceCollector_Failure.txt"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="32,117" URLSpecifier="/Input2" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="/Input2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="114,168">
+        <translation xmi:type="utility:ConstantString" string="HTTP Reply2"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.expire" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="In1"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="In2"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

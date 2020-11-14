@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/InputXMLSchema.xsd"/>
+    <output path="/OutputXMLSchema.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="Transformation_Map">
+        <input path="mb:msg(SaleEnvelope,assembly,XMLNSC,Properties)"/>
+        <output path="mb:msg(SaleEnvelopeA,assembly,XMLNSC,Properties)"/>
+        <move>
+            <input path="Properties"/>
+            <output path="Properties"/>
+        </move>
+        <foreach>
+            <input path="SaleEnvelope/SaleList/Invoice" var="Invoice"/>
+            <output path="SaleEnvelopeA/SaleListA/Statement"/>
+            <move>
+                <input path="$Invoice/Surname"/>
+                <output path="Customer/Name"/>
+            </move>
+            <move>
+                <input path="$Invoice/Balance"/>
+                <output path="Customer/Balance"/>
+            </move>
+            <foreach>
+                <input path="$Invoice/Item" var="Item"/>
+                <output path="Purchases/Article"/>
+                <move>
+                    <input path="$Item/Description"/>
+                    <output path="Desc"/>
+                </move>
+                <expression>
+                    <input path="$Item/Price" var="Price"/>
+                    <output path="Cost" var="Cost"/>
+                    <code lang="xpath">fn:round-half-to-even( (xs:decimal($Price) * xs:decimal(1.6)),  2 )</code>
+                </expression>
+                <move>
+                    <input path="$Item/Quantity"/>
+                    <output path="Qty"/>
+                </move>
+            </foreach>
+            <function ref="fn:string-join">
+                <input path="$Invoice/Initial" var="Initial3"/>
+                <output path="Customer/Initials"/>
+                <param name="strings" value="$Initial3"/>
+                <param name="separator" value="''"/>
+            </function>
+            <assign value="Monthly">
+                <output path="@Type"/>
+            </assign>
+            <assign value="Full">
+                <output path="@Style"/>
+            </assign>
+            <expression>
+                <input path="$Invoice/." var="Invoice1"/>
+                <output path="Amount/mixed" var="mixed"/>
+                <code lang="xpath">fn:round-half-to-even(  (fn:sum($Invoice1/Item/(Price*Quantity)) * 1.6 ), 2 )</code>
+            </expression>
+            <move>
+                <input path="$Invoice/Currency"/>
+                <output path="Amount/@Currency"/>
+            </move>
+        </foreach>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AggregationSOAPBackend1" targetNamespace="http://AggregationSOAPBackend1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://AggregationSOAPBackend1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="AggregationSOAPBackend1HttpBinding" originalBindingStyle="document"/>
+        <generatedXSD location="AggregationSOAPBackend1_InlineSchema1.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  
+  <wsdl:types>
+    
+        <xsd:schema targetNamespace="http://AggregationSOAPBackend1" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+      <xsd:include schemaLocation="AggregationSOAPBackend1_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="backendOperation1RequestMsg">
+    <wsdl:part element="tns:backendOperation1" name="backendOperation1Parameters"/>
+  </wsdl:message>
+  <wsdl:message name="backendOperation1ResponseMsg">
+    <wsdl:part element="tns:backendOperation1Response" name="backendOperation1Result"/>
+  </wsdl:message>
+  <wsdl:portType name="AggregationSOAPBackend1">
+    <wsdl:operation name="backendOperation1">
+      <wsdl:input message="tns:backendOperation1RequestMsg" name="backendOperation1Request"/>
+      <wsdl:output message="tns:backendOperation1ResponseMsg" name="backendOperation1Response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AggregationSOAPBackend1HttpBinding" type="tns:AggregationSOAPBackend1">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="backendOperation1">
+      <soap:operation soapAction="http://AggregationSOAPBackend1/backendOperation1"/>
+      <wsdl:input name="backendOperation1Request">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="backendOperation1Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    </wsdl:binding>
+  <wsdl:service name="AggregationSOAPBackend1HttpService">
+    <wsdl:port binding="tns:AggregationSOAPBackend1HttpBinding" name="AggregationSOAPBackend1HttpPort">
+      <soap:address location="http://localhost:7800/AggregationSOAPBackend1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <InputMessage timestamp="1456403383831" nodeId="FCMComposite_1_1" name="Input.json" id="1456403383831-121">
+        <plainText>{ "limit" : 10, "skip" : 0 }</plainText>
+    </InputMessage>
+    <InputMessage timestamp="1456403383831" nodeId="FCMComposite_1_1" name="InputWithWhere.json" id="1456403383831-122">
+        <plainText>{ "limit" : 10, "skip" : 0, "where" : "CreatedDate > 2015-01-01T00:00:00-00:00" }</plainText>
+    </InputMessage>
+</MessagePool>

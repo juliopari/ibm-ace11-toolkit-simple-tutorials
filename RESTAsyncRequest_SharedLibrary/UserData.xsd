@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="User" type="User"/>
+    <xsd:complexType name="User">
+    	<xsd:sequence>
+    		<xsd:element name="FirstName" type="xsd:string"></xsd:element>
+    		<xsd:element name="LastName" type="xsd:string"></xsd:element>
+    		<xsd:element name="UserDetails" type="xsd:string"></xsd:element>
+    		<xsd:element name="UserNumber" type="xsd:string"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

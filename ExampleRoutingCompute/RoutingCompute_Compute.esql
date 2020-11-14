@@ -1,0 +1,16 @@
+
+
+CREATE COMPUTE MODULE RoutingCompute_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		DECLARE Country CHAR FIELDVALUE(InputRoot.JSON.Data.Country);
+		IF Country = 'GB' OR Country='US' OR Country='DE' OR Country='NL' THEN					
+			PROPAGATE TO LABEL Country;			
+		ELSE 
+			THROW USER EXCEPTION MESSAGE 2951 
+			VALUES('The Country was not recognised!');
+		END IF;
+		RETURN TRUE;		
+	END;
+END MODULE;

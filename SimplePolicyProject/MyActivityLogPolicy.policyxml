@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="ActivityLog" policyName="MyActivityLogPolicy" policyTemplate="Activity Log Template">
+    <enabled>true</enabled>
+    <executionGroupFilter></executionGroupFilter>
+    <filter></filter>
+    <minSeverityLevel>INFORMATIONAL</minSeverityLevel>
+    <fileName>ChangeThisValueWhenFollowingTutorialInstructions</fileName>
+    <numberOfLogs>4</numberOfLogs>
+    <maxAgeMins>0</maxAgeMins>
+    <maxFileSizeMb>25</maxFileSizeMb>
+    <formatEntries>false</formatEntries>
+  </policy>
+</policies>

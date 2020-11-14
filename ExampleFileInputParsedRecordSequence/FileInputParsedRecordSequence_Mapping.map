@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/RecordFile.xsd"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/BlobMessage.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FileInputParsedRecordSequence_Mapping">
+        <input path="mb:msg(Message,assembly,XMLNSC,LocalEnvironment,Properties)" var="ComIbmMessageAssembly_Message"/>
+        <output path="mb:msg(BLOB,assembly,BLOB,Properties)" var="ComIbmMessageAssembly_BLOB"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_Message/Properties"/>
+            <output path="$ComIbmMessageAssembly_BLOB/Properties"/>
+        </move>
+        <expression>
+            <input path="$ComIbmMessageAssembly_Message/Message/RecordData" var="RecordData"/>
+            <input path="$ComIbmMessageAssembly_Message/LocalEnvironment/File/Record" var="Record"/>
+            <output path="$ComIbmMessageAssembly_BLOB/BLOB/text()"/>
+            <code lang="xpath">iib:hexBinaryValue(fn:concat(fn:concat('Record Number ',$Record),fn:concat(' Data = ',$RecordData)))</code>
+        </expression>
+    </mappingDeclaration>
+</mappingRoot>

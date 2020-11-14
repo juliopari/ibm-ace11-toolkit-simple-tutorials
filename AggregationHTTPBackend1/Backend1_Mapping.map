@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="mbsharedlib://AggregationHTTPAsyncLib/CSV.xsd"/>
+    <output path="mbsharedlib://AggregationHTTPAsyncLib/CSV.xsd"/>
+    <namespaces>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="Backend1_Mapping">
+        <input path="mb:msg(CSV,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_CSV"/>
+        <output path="mb:msg(CSV,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_CSV1"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_CSV/Properties"/>
+            <output path="$ComIbmMessageAssembly_CSV1/Properties"/>
+            <override>
+                <assign value="{AggregationHTTPAsyncLib}">
+                    <output path="$ComIbmMessageAssembly_CSV1/Properties/MessageSet"/>
+                </assign>
+                <assign value="{}:CSV">
+                    <output path="$ComIbmMessageAssembly_CSV1/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <function ref="fn:upper-case">
+            <input path="$ComIbmMessageAssembly_CSV/CSV/record/field1" var="field1"/>
+            <output path="$ComIbmMessageAssembly_CSV1/CSV/record/field1"/>
+            <param name="string" value="$field1"/>
+        </function>
+        <function ref="fn:upper-case">
+            <input path="$ComIbmMessageAssembly_CSV/CSV/record/field2" var="field2"/>
+            <output path="$ComIbmMessageAssembly_CSV1/CSV/record/field2"/>
+            <param name="string" value="$field2"/>
+        </function>
+        <function ref="fn:upper-case">
+            <input path="$ComIbmMessageAssembly_CSV/CSV/record/field3" var="field3"/>
+            <output path="$ComIbmMessageAssembly_CSV1/CSV/record/field3"/>
+            <param name="string" value="$field3"/>
+        </function>
+    </mappingDeclaration>
+</mappingRoot>

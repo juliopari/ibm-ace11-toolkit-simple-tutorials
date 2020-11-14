@@ -1,0 +1,18 @@
+BROKER SCHEMA gen
+
+CREATE COMPUTE MODULE getAggregatedResponseOperation_Request_Response_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		DECLARE tns NAMESPACE 'http://AggregationSOAPAsync';		
+		DECLARE ns1 NAMESPACE 'http://AggregationSOAPBackend1';
+		DECLARE ns2 NAMESPACE 'http://AggregationSOAPBackend2';
+		SET OutputRoot.Properties = InputRoot.ComIbmAggregateReplyBody.Backend1.Properties;		
+		CREATE LASTCHILD OF OutputRoot DOMAIN('XMLNSC');
+		SET OutputRoot.XMLNSC.tns:getAggregatedResponseOperationResponse.tns:output1 = 
+			InputRoot.ComIbmAggregateReplyBody.Backend1.SOAP.Body.ns1:backendOperation1Response.output1;
+		SET OutputRoot.XMLNSC.tns:getAggregatedResponseOperationResponse.tns:output2 = 
+			InputRoot.ComIbmAggregateReplyBody.Backend2.SOAP.Body.ns2:backendOperation2Response.output2;
+		RETURN TRUE;
+	END;
+END MODULE;

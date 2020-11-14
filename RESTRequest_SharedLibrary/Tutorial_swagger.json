@@ -1,0 +1,52 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "RESTRequest_API",
+    "version" : "1.0.0",
+    "description" : "RESTRequest_API"
+  },
+  "paths" : {
+    "/{UserNumber}" : {
+      "get" : {
+        "operationId" : "getUser",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/Output"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve User",
+        "parameters" : [ {
+          "required" : true,
+          "name" : "UserNumber",
+          "in" : "path",
+          "type" : "string"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/restrequest_api/v1",
+  "definitions" : {
+    "Output" : {
+      "type" : "object",
+      "properties" : {
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "userDetails" : {
+          "type" : "string"
+        },
+        "userNumber" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "host" : "localhost:7800"
+}

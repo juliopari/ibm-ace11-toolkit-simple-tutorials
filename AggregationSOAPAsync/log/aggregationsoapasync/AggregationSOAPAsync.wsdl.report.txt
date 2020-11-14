@@ -1,0 +1,13 @@
+
+
+Importing file: C:\Users\IBM_ADMIN\IBM\IIBT10\workspaceTestAsyncCallableAggregation\AggregationSOAPAsync\AggregationSOAPAsync.wsdl
+
+The WSDL import will proceed with bindings AggregationSOAPAsyncHttpBinding.
+Creating wsdl schema document for platform:/resource/AggregationSOAPAsync/AggregationSOAPAsync.wsdl.
+Parsing wsdl binding {http://AggregationSOAPAsync}AggregationSOAPAsyncHttpBinding.
+Parsing wsdl binding input getAggregatedResponseOperation.
+Parsing wsdl binding output getAggregatedResponseOperation.
+Processing doc style for operation getAggregatedResponseOperation.
+Populating WSDL schema AggregationSOAPAsync.xsd.
+Creating file AggregationSOAPAsync.xsd in the workspace.
+Copying source WSDL AggregationSOAPAsync.wsdl to AggregationSOAPAsync.wsdl.

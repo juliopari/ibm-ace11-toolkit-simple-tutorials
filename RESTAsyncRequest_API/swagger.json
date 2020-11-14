@@ -1,0 +1,51 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "RESTAsyncRequest_API",
+    "version" : "1.0.0",
+    "description" : "RESTAsyncRequest_API"
+  },
+  "paths" : {
+    "/{UserNumber}" : {
+      "get" : {
+        "operationId" : "getUserNumber",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve User",
+        "parameters" : [ {
+          "required" : true,
+          "name" : "UserNumber",
+          "in" : "path",
+          "type" : "string"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/restasyncrequest_api/v1",
+  "definitions" : {
+    "Output" : {
+      "type" : "object",
+      "properties" : {
+        "userNumber" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "userDetails" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

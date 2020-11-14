@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmDatabaseRoute.msgnode="ComIbmDatabaseRoute.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:ComIbmWSInput.msgnode="ComIbmWSInput.msgnode" xmlns:ComIbmWSReply.msgnode="ComIbmWSReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="DatabaseRouteFlow.msgflow" nsPrefix="DatabaseRouteFlow.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="DatabaseRouteFlow" bundleName="DatabaseRouteFlow" pluginId="ExampleDatabaseRoute"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ExampleDatabaseRoute/icons/full/obj16/DatabaseRouteFlow.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ExampleDatabaseRoute/icons/full/obj30/DatabaseRouteFlow.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="25,107" URLSpecifier="/DatabaseRouteFlow" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="491,153">
+        <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDatabaseRoute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="113,103" dataSourceName="{MyPolicies}:MyJDBCPolicy" sqlQuery="SELECT EMPLOYEES.COUNTRY&#xA;FROM EMPLOYEES&#xA;WHERE EMPLOYEES.FIRSTNAME = ?&#xA;AND EMPLOYEES.LASTNAME = ?&#xA;ORDER BY EMPLOYEES.COUNTRY ASC" tableNameComboValues="0,0,0~EMPLOYEES" columnNameComboValues="0,1,2~COUNTRY,FIRSTNAME,LASTNAME,PKEY" operatorComboValues="0,2,2~=" valueTypeComboValues="0,2,2~Element">
+        <outTerminals terminalNodeID="Match" dynamic="true" label="Match"/>
+        <outTerminals terminalNodeID="US" dynamic="true" label="US"/>
+        <outTerminals terminalNodeID="GB" dynamic="true" label="GB"/>
+        <outTerminals terminalNodeID="DE" dynamic="true" label="DE"/>
+        <outTerminals terminalNodeID="NL" dynamic="true" label="NL"/>
+        <translation xmi:type="utility:ConstantString" string="Database Route"/>
+        <queryElements tableName="EMPLOYEES" columnName="COUNTRY" operator="ASC" valueType="None" value="None"/>
+        <queryElements tableName="EMPLOYEES" columnName="FIRSTNAME" operator="=" valueType="Element" value="$Root/JSON/Data/FirstName"/>
+        <queryElements tableName="EMPLOYEES" columnName="LASTNAME" operator="=" valueType="Element" value="$Root/JSON/Data/LastName"/>
+        <filterTable filterPattern="$EMPLOYEES_COUNTRY='GB'" routingOutputTerminal="GB"/>
+        <filterTable filterPattern="$EMPLOYEES_COUNTRY='US'" routingOutputTerminal="US"/>
+        <filterTable filterPattern="$EMPLOYEES_COUNTRY='DE'" routingOutputTerminal="DE"/>
+        <filterTable filterPattern="$EMPLOYEES_COUNTRY='NL'" routingOutputTerminal="NL"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="324,70" outputDirectory="C:\temp" outputFilename="CountryUS.json">
+        <translation xmi:type="utility:ConstantString" string="CountryUS.json"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="325,168" outputDirectory="C:\temp" outputFilename="CountryDE.json">
+        <translation xmi:type="utility:ConstantString" string="CountryDE.json"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="324,8" outputDirectory="C:\temp" outputFilename="CountryGB.json">
+        <translation xmi:type="utility:ConstantString" string="CountryGB.json"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="327,233" outputDirectory="C:\temp" outputFilename="CountryNL.json">
+        <translation xmi:type="utility:ConstantString" string="CountryNL.json"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in">
+        <bendPoints>199,23,-164,-27</bendPoints>
+      </connections>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_4" sourceTerminalName="GB" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_4" sourceTerminalName="US" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_4" sourceTerminalName="DE" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_4" sourceTerminalName="NL" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_14" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.keyNotFound" targetTerminalName="InTerminal.in">
+        <bendPoints>206,7,-157,-43</bendPoints>
+      </connections>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

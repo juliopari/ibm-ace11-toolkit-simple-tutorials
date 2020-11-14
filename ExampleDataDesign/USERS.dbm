@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<xmi:XMI xmlns:datamodelversion="http://www.ibm.com/com.ibm.datatools.core/model/data/1.8.0.0" xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DB2Model="http:///com/ibm/db/models/db2/db2.ecore" xmlns:LUW="http:///com/ibm/db/models/db2/luw.ecore" xmlns:SQLAccessControl="http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore" xmlns:SQLConstraints="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore" xmlns:SQLDataTypes="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore">
+  <LUW:LUWDatabase xmi:id="_L65uAK4uEemrmcnKeWhsUA" name="USERS" vendor="DB2 UDB" version="V11.1" schemas="_L7La0K4uEemrmcnKeWhsUA" authorizationIds="_L7VL0K4uEemrmcnKeWhsUA" federated="true">
+    <eAnnotations xmi:id="_L65uAa4uEemrmcnKeWhsUA" source="ConnectionURI">
+      <details xmi:id="_L65uAq4uEemrmcnKeWhsUA" key="ConnectionKey" value="USERS1"/>
+    </eAnnotations>
+  </LUW:LUWDatabase>
+  <DB2Model:DB2Schema xmi:id="_L7La0K4uEemrmcnKeWhsUA" name="MYSCHEMA" tables="_L7La0a4uEemrmcnKeWhsUA" database="_L65uAK4uEemrmcnKeWhsUA" owner="_L7VL0K4uEemrmcnKeWhsUA"/>
+  <LUW:LUWTable xmi:id="_L7La0a4uEemrmcnKeWhsUA" name="EMPLOYEES" schema="_L7La0K4uEemrmcnKeWhsUA" partitionMode=" ">
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_L7La0q4uEemrmcnKeWhsUA" name="PKEY" nullable="false">
+      <containedType xsi:type="SQLDataTypes:IntegerDataType" xmi:id="_L7La064uEemrmcnKeWhsUA" name="INTEGER" primitiveType="INTEGER"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_L7La1K4uEemrmcnKeWhsUA" name="FIRSTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_L7La1a4uEemrmcnKeWhsUA" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_L7La1q4uEemrmcnKeWhsUA" name="LASTNAME">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_L7La164uEemrmcnKeWhsUA" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="30"/>
+    </columns>
+    <columns xsi:type="LUW:LUWColumn" xmi:id="_L7La2K4uEemrmcnKeWhsUA" name="COUNTRY">
+      <containedType xsi:type="SQLDataTypes:CharacterStringDataType" xmi:id="_L7La2a4uEemrmcnKeWhsUA" name="VARCHAR" primitiveType="CHARACTER_VARYING" length="2"/>
+    </columns>
+    <constraints xsi:type="SQLConstraints:PrimaryKey" xmi:id="_L7La2q4uEemrmcnKeWhsUA" name="SQL190723131239120" members="_L7La0q4uEemrmcnKeWhsUA"/>
+  </LUW:LUWTable>
+  <SQLAccessControl:User xmi:id="_L7VL0K4uEemrmcnKeWhsUA" name="SYSIBM" ownedSchema="_L7La0K4uEemrmcnKeWhsUA" Database="_L65uAK4uEemrmcnKeWhsUA"/>
+</xmi:XMI>

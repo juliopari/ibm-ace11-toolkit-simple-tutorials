@@ -1,0 +1,17 @@
+
+
+CREATE COMPUTE MODULE AggregationMQ_FanIn_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE tns NAMESPACE 'http://www.ibm.com/Example';		
+		SET OutputRoot.Properties = InputRoot.ComIbmAggregateReplyBody.Backend1.Properties;
+		SET OutputRoot.MQMD = InputRoot.ComIbmAggregateReplyBody.Backend1.MQMD;
+		CREATE LASTCHILD OF OutputRoot DOMAIN('XMLNSC');
+		SET OutputRoot.XMLNSC.tns:OverallOutputMessage.tns:ResponseBackend1 = InputRoot.ComIbmAggregateReplyBody.Backend1.XMLNSC.tns:BackendMessage1.tns:Field;		
+		SET OutputRoot.XMLNSC.tns:OverallOutputMessage.tns:ResponseBackend2 = InputRoot.ComIbmAggregateReplyBody.Backend2.XMLNSC.tns:BackendMessage2.tns:Field;
+				
+		RETURN TRUE;
+	END;
+
+END MODULE;
