@@ -1,0 +1,60 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "CallAnotherAPI",
+    "version" : "1.0.0",
+    "description" : "CallAnotherAPI"
+  },
+  "paths" : {
+    "/findByZipCode" : {
+      "post" : {
+        "operationId" : "postFindByZipCode",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/ZipCodeResponse"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a findByZipCode",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/ZipCodeRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/callanotherapi/v1",
+  "definitions" : {
+    "ZipCodeRequest" : {
+      "type" : "object",
+      "properties" : {
+        "zipCode" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ZipCodeResponse" : {
+      "type" : "object",
+      "properties" : {
+        "address" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

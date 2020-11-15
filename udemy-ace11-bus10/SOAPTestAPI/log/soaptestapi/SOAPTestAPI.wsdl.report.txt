@@ -1,0 +1,13 @@
+
+
+Importing file: /Users/mac/IBM/ACET11/workspace_class_ibm/SOAPTestAPI/SOAPTestAPI.wsdl
+
+The WSDL import will proceed with bindings SOAPTestAPIHttpBinding.
+Creating wsdl schema document for platform:/resource/SOAPTestAPI/SOAPTestAPI.wsdl.
+Parsing wsdl binding {http://SOAPTestAPI}SOAPTestAPIHttpBinding.
+Parsing wsdl binding input firstSoapAPI.
+Parsing wsdl binding output firstSoapAPI.
+Processing doc style for operation firstSoapAPI.
+Populating WSDL schema SOAPTestAPI.xsd.
+Creating file SOAPTestAPI.xsd in the workspace.
+Copying source WSDL SOAPTestAPI.wsdl to SOAPTestAPI.wsdl.

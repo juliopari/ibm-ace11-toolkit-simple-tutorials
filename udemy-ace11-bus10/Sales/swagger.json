@@ -1,0 +1,93 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "Sales",
+    "version" : "1.0.0",
+    "description" : "Sales"
+  },
+  "paths" : {
+    "/sum" : {
+      "get" : {
+        "operationId" : "getSum",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/SumRS"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve sum",
+        "parameters" : [ {
+          "name" : "value1",
+          "in" : "query",
+          "type" : "string",
+          "required" : true,
+          "description" : "Value one to sum"
+        }, {
+          "name" : "value2",
+          "in" : "query",
+          "type" : "string",
+          "required" : true,
+          "description" : "Value two to sum"
+        } ]
+      }
+    },
+    "/sales" : {
+      "post" : {
+        "operationId" : "postSales",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/SalesRS"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a sales",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/SalesRQ"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/sales/v1",
+  "definitions" : {
+    "SumRS" : {
+      "type" : "object",
+      "properties" : {
+        "resultOfSum" : {
+          "type" : [ "string", "null" ]
+        }
+      }
+    },
+    "SalesRQ" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SalesRS" : {
+      "type" : "object",
+      "properties" : {
+        "result" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

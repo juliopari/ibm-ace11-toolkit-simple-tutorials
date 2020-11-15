@@ -1,0 +1,55 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "CallZipCode",
+    "version" : "1.0.0",
+    "description" : "CallZipCode"
+  },
+  "paths" : {
+    "/zipCodes" : {
+      "get" : {
+        "operationId" : "getZipCodes",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/zipCodesResponse"
+            }
+          }
+        },
+        "produces" : [ "application/json" ],
+        "description" : "Retrieve zipCodes",
+        "parameters" : [ {
+          "name" : "zipCode1",
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "zipCode2",
+          "in" : "query",
+          "type" : "string"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/callzipcode/v1",
+  "definitions" : {
+    "zipCodesResponse" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "state" : {
+            "type" : "object",
+            "properties" : { }
+          },
+          "city" : {
+            "type" : "string"
+          },
+          "zipCode" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
